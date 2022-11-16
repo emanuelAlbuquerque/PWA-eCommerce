@@ -1,0 +1,20 @@
+export function ChevronUp(){
+  return (
+    <svg
+      width={18}
+      height={10}
+      viewBox="0 0 18 10"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.5 9L9 1.5 16.5 9"
+        stroke="#13101E"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="icon"
+      />
+    </svg>
+  )
+}
