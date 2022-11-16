@@ -1,5 +1,7 @@
 export interface IconProps{
   color?: string
+  isWeb?: boolean
+  className?: string
 }
 
 
