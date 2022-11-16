@@ -1,17 +1,20 @@
 import { createGlobalStyle } from "styled-components"
 
+
 export const GlobalStyle =  createGlobalStyle`
   *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-size: 16px;
-    font-family: 'Inter', sans-serif;
+  }
+  body, html{
+     font-family: 'Inter', sans-serif;
   }
   a{
     text-decoration: none;
   }
-  html, body, div, span, applet, object, iframe,
+  div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
   del, dfn, em, img, ins, kbd, q, s, samp,
@@ -28,7 +31,6 @@ export const GlobalStyle =  createGlobalStyle`
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
 article, aside, details, figcaption, figure, 
