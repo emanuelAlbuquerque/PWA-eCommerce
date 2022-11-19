@@ -17,38 +17,18 @@ export default {
 } as Meta<ButtonProps>
 
 export const Default: Story<ButtonProps> = () => (
-  <LinkButton variant="default">
-    <div>
-      <Placeholder />
-      Ola mundo
-    </div>
-  </LinkButton >
+  <LinkButton variant="default" icon={<Placeholder />} text="Ola mundo" />
 )
 
 
 export const Hover: Story<ButtonProps> = () => (
-  <LinkButton variant="hover">
-    <div>
-      <Placeholder />
-      Ola mundo
-    </div>
-  </LinkButton >
+  <LinkButton variant="hover" icon={<Placeholder />} text="Ola mundo" />
 )
 
 export const Focus: Story<ButtonProps> = () => (
-  <LinkButton variant="focused">
-    <div>
-      <Placeholder />
-      Ola mundo
-    </div>
-  </LinkButton >
+  <LinkButton variant="focused" icon={<Placeholder />} text="Ola mundo" />
 )
 
 export const Disable: Story<ButtonProps> = () => (
-  <LinkButton variant='disable' >
-    <div>
-      <Placeholder />
-      Ola mundo
-    </div>
-  </LinkButton >
+  <LinkButton variant='disable' icon={<Placeholder />} text="Ola mundo" />
 )

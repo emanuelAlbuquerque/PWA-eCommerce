@@ -1,7 +1,7 @@
 import { ButtonProps } from "../Types";
 import { Ancora, corVariantes } from "./styles";
 
-export const LinkButton = ({ children, variant }: ButtonProps) => {
+export const LinkButton = ({ text, icon, variant, onClick}: ButtonProps) => {
 
   const { bgColor, bgBorder, color, mouseHover, focusMouse } = corVariantes[variant]
 
@@ -16,8 +16,10 @@ export const LinkButton = ({ children, variant }: ButtonProps) => {
       focusBgColor={focusMouse.focusBgColor}
       focusBgBorder={focusMouse.focusBgBorder}
       focusColor={focusMouse.focusColor}
-    >
-      {children}
+      onClick={onClick}
+    > 
+      {icon}
+      {text}
     </Ancora>
   )
 }

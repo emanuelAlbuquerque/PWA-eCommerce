@@ -82,6 +82,15 @@ export const Button = styled.button<ButtonColorProps>`
 
   cursor: pointer;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  .icon {
+    fill: ${props => props.color};
+  }
+
   border-radius: 8px;
 
   &:hover{
@@ -101,19 +110,6 @@ export const Button = styled.button<ButtonColorProps>`
 
     .icon{
      fill: ${props => props.focusColor}
-    }
-  }
-
-  div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    
-    .icon {
-      fill: ${props => props.color};
     }
   }
 `

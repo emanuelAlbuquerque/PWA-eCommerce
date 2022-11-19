@@ -84,6 +84,15 @@ export const Button = styled.button<ButtonColorProps>`
 
   border-radius: 8px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  .icon {
+    fill: ${props => props.color};
+  }
+
   &:hover{
     background-color: ${props => props.hoverBgColor};
     border: ${props => props.hoverBgBorder};
@@ -104,16 +113,5 @@ export const Button = styled.button<ButtonColorProps>`
     }
   }
 
-  div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    
-    .icon {
-      fill: ${props => props.color};
-    }
-  }
+ 
 `

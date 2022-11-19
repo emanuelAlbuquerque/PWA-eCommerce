@@ -75,6 +75,7 @@ export const Ancora = styled.a<ButtonColorProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
 
   border: none;
   background-color: ${props => props.bgColor};
@@ -86,6 +87,10 @@ export const Ancora = styled.a<ButtonColorProps>`
   text-decoration: none;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
+
+  .icon {
+    fill: ${props => props.color};
+  }
 
 
   &:hover{
@@ -108,16 +113,4 @@ export const Ancora = styled.a<ButtonColorProps>`
     }
   }
 
-  div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    
-    .icon {
-      fill: ${props => props.color};
-    }
-  }
 `

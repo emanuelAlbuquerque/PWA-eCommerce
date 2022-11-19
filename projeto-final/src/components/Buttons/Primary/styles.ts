@@ -6,11 +6,11 @@ import { ButtonColorProps, corVariantesTypes } from "../Types";
 export const corVariantes: corVariantesTypes = {
   default: {
     bgColor: Theme.Colors.primary,
-    bgBorder: '',
+    bgBorder: Theme.Colors.primary,
     color: Theme.Colors.bright,
     mouseHover: {
       hoverBgColor: Theme.Colors.primaryTint,
-      hoverBgBorder: '',
+      hoverBgBorder: Theme.Colors.primary,
       hoveColor: Theme.Colors.bright
     },
     focusMouse: {
@@ -21,11 +21,11 @@ export const corVariantes: corVariantesTypes = {
   },
   hover: {
     bgColor: Theme.Colors.primaryTint,
-    bgBorder:'',
+    bgBorder: Theme.Colors.primaryTint,
     color: Theme.Colors.bright,
     mouseHover: {
       hoverBgColor: Theme.Colors.primaryTint,
-      hoverBgBorder: '',
+      hoverBgBorder: Theme.Colors.primaryTint,
       hoveColor: Theme.Colors.bright
     },
     focusMouse: {
@@ -40,7 +40,7 @@ export const corVariantes: corVariantesTypes = {
     color: Theme.Colors.bright,
     mouseHover: {
       hoverBgColor: Theme.Colors.primary,
-      hoverBgBorder: '',
+      hoverBgBorder: Theme.Colors.primary,
       hoveColor: Theme.Colors.bright
     },
     focusMouse: {
@@ -55,7 +55,7 @@ export const corVariantes: corVariantesTypes = {
     color: Theme.Colors.lightText,
     mouseHover: {
       hoverBgColor: Theme.Colors.grey,
-      hoverBgBorder: '',
+      hoverBgBorder: Theme.Colors.grey,
       hoveColor: Theme.Colors.lightText
     },
     focusMouse: {
@@ -82,6 +82,11 @@ export const Button = styled.button<ButtonColorProps>`
 
   cursor: pointer;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
   border-radius: 8px;
 
   &:hover{
@@ -96,17 +101,9 @@ export const Button = styled.button<ButtonColorProps>`
     color: ${props => props.focusColor};
   }
 
-  div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    
-    .icon {
-      fill: ${props => props.hoverColor};
-    }
+  .icon {
+    stroke: ${props => props.hoverColor};
   }
+  
 
 `

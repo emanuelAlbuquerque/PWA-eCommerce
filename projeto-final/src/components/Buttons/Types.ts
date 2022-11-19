@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
 
 export interface ButtonProps {
-  children: ReactNode;
   variant: 'default' | 'hover' | 'focused' | 'disable'
+  icon?: ReactNode
+  text?: string
+  onClick?: () => void
 }
 
 
