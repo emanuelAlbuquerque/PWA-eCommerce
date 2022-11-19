@@ -19,6 +19,7 @@ export function Bag({ color = 'none', isWeb = true, className }: IconProps) {
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="icon"
       />
     </svg>
   )

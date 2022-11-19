@@ -10,6 +10,7 @@ export function Categories({ color = 'none' }: IconProps) {
       viewBox="0 0 20 20"
       fill={color}
       xmlns="http://www.w3.org/2000/svg"
+      className="icon"
     >
       <path
         d="M14.875 18.25a3.375 3.375 0 100-6.75 3.375 3.375 0 000 6.75zM5.125 8.5a3.375 3.375 0 100-6.75 3.375 3.375 0 000 6.75zM5.125 18.25a3.375 3.375 0 100-6.75 3.375 3.375 0 000 6.75zM14.875 8.5a3.375 3.375 0 100-6.75 3.375 3.375 0 000 6.75z"
@@ -17,6 +18,7 @@ export function Categories({ color = 'none' }: IconProps) {
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="icon"
       />
     </svg>
   )
