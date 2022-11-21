@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export function Search() {
+export function SearchIcon() {
   return (
     <svg
       width={20}
