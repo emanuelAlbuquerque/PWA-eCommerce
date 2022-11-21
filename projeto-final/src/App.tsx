@@ -30,7 +30,7 @@ import { Plus } from './assets/Icons/General/Plus'
 import { Profile } from './assets/Icons/General/Profile'
 import { ProfileFill } from './assets/Icons/General/ProfileFill'
 import { Review } from './assets/Icons/General/Review'
-import { Search } from './assets/Icons/General/Search'
+import { SearchIcon } from './assets/Icons/General/SearchIcon'
 import { SmallMinus } from './assets/Icons/General/SmallMinus'
 import { SmallPlus } from './assets/Icons/General/SmallPlus'
 import { Sort } from './assets/Icons/General/Sort'
@@ -49,8 +49,27 @@ import { ButtonPrimary } from './components/Buttons/Primary/ButtonPrimary'
 import { TextTypes } from './components/Text/Text'
 import { HeaderIcon } from './assets/Icons/General/HeaderIcon'
 import { Header } from './components/Header/Header'
+import { FooterWeb } from './components/FooterWeb/FooterWeb'
+import { FooterMobile } from './components/FooterMobile/FooterMobile'
+import { AppBar } from './components/AppBar/AppBar'
+import { BottomNavigation } from './components/BottomNavigation/BottomNavigation'
+import { ButtonDuo } from './components/AssemblyButtons/Duo/ButtonDuo'
+import { ButtonDetailed } from './components/AssemblyButtons/Detailed/ButtonDetailed'
+import { ButtonTwoCTA } from './components/AssemblyButtons/TwoCTA/ButtonTwoCTA'
+import { ButtonSingle } from './components/AssemblyButtons/Single/ButtonSingle'
+import { useState } from 'react'
+import { Accordian } from './components/Accordian/Accordian'
+import { CheckBox } from './components/Checkboxes/CheckBox'
+import { RadioButton } from './components/RadioButton.tsx/RadioButton'
+import { SideNavigation } from './components/SideNavigation/SideNavigation'
+import { HorizontalMenu } from './components/HorizontalMenu/HorizontalMenu'
+import { Stepper } from './components/Stepper/Stepper'
+import { Ratings } from './components/Ratings/Ratings'
+import { Search } from './components/Search/Search'
 
 function App() {
+
+  const [teste, setTeste] = useState(false)
   return (
     <div className="">
       <SkinCare color={Theme.Colors.highLight}/>
@@ -63,7 +82,7 @@ function App() {
       <Bag color={Theme.Colors.highLight} />
       <ProfileFill />
       <Placeholder />
-      <Search />
+      <SearchIcon />
       <NotificationIcon />
       <Menu />
       <LocationIcon />
@@ -99,18 +118,96 @@ function App() {
       <Review />
       <DeleteSmall />
       <Eye />
-      <ButtonPrimary variant='default'>
-        <div>
-          <Placeholder />
-          ljdbue
-        </div>  
-      </ButtonPrimary>
+      <ButtonPrimary variant='default' icon={<Placeholder />} text='label' />
 
       <TextTypes variant={'DisplayLarge'}>
         testando
       </TextTypes>
 
-      <Header />
+      <FooterWeb />
+      
+
+      <Accordian>
+        <FooterMobile />
+      </Accordian>
+
+      <AppBar variant='PageTitle'>
+        <div>
+          <button>
+            <Placeholder />
+          </button>
+          <p>Search</p>
+        </div>
+        <div>
+          <button><Placeholder /></button>
+          <button><Placeholder /></button> 
+          <button><Placeholder /></button>
+        </div>
+      </AppBar>
+
+      <BottomNavigation />
+      <BottomNavigation theme='dark'/>
+
+      <br />
+      <br />
+
+      <ButtonSingle icon={<Bag />} text="Add to Bag" />
+
+      <br />
+      <br />
+
+      <ButtonDuo iconButtonLarge={<Placeholder />} iconButtonSmall={<Placeholder />} textButtonLarge="Label" />
+
+      <br />
+      <br />
+
+      <ButtonDetailed title="Title" heading="Heading" textButton='Place Order'/>
+
+      <br />
+      <br />
+
+      <ButtonTwoCTA
+        iconButtonPrimary={<Placeholder />}
+        iconButtonSecondary={<Placeholder />}
+        textButtonPrimary='label'
+        textButtonSecondary="label"
+      />
+
+      <Accordian />
+
+      <CheckBox label='Aperte aqui' name='aperte' checked />
+      <CheckBox label='Aperte aqui' name='mundo' disabled />
+      <CheckBox label='Aperte aqui' name='ola'  />
+
+      <RadioButton value='ola' label='tudo' name='olaww' id='1'/>
+      <RadioButton value='olasdc' label='tudo' name='olaww' id='2'/>
+      <RadioButton value='olacssdc' label='tudo' name='olaww' disabled/>
+      
+      <SideNavigation text='Label' id='1de'/>
+      <SideNavigation text='Label' id='1di'/>
+      <SideNavigation text='Label' selected/>
+
+      <br />
+      <br />
+
+
+      <HorizontalMenu text='ola mundo' icon={<Placeholder />} />
+      <HorizontalMenu text='ola mundo' icon={<Placeholder />} checked/>
+
+      <br />
+      <br />
+
+      <Stepper />
+
+      <br />
+      <br />
+
+      <Ratings defaultValue={-10}/>
+
+      <br />
+      <br />
+
+      <Search iconOne={<Placeholder />} iconTwo={<Placeholder />}/>
     </div>
   )
 }
