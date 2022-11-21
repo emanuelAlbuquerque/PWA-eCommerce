@@ -4,7 +4,6 @@ import { Youtube } from "../../assets/Icons/General/Youtube";
 import { Instagram } from "../../assets/Icons/General/Instagram";
 import { Twitter } from "../../assets/Icons/General/Twitter";
 import { Facebook } from "../../assets/Icons/General/Facebook";
-import { Theme } from "../../styles/Theme";
 
 export function FooterWeb() {
   return (

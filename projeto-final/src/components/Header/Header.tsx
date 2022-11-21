@@ -1,6 +1,6 @@
 import { HeaderIcon } from "../../assets/Icons/General/HeaderIcon";
 import { Profile } from "../../assets/Icons/General/Profile";
-import { Search } from "../../assets/Icons/General/Search";
+import { SearchIcon } from "../../assets/Icons/General/SearchIcon";
 import { Bag } from "../../assets/Icons/Navigation/Bag";
 import { Hearth } from "../../assets/Icons/Navigation/Heath";
 import { Theme } from "../../styles/Theme";
@@ -17,7 +17,7 @@ export function Header(){
 
       <ContainerPesquisa>
         <div className="container_input_pesquisa">
-          <Search />
+          <SearchIcon />
           <input type="text" className="input_pesquisa" placeholder="Search for products or brands....."/>
         </div>
 
