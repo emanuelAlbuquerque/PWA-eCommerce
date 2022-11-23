@@ -26,7 +26,7 @@ export function Search({ iconOne, iconTwo, onClickButtonVoltar, onClickIconOne, 
           value={value}
           onChange={(text) => setValue(text.target.value)}
         />
-        {iconOne || iconTwo && 
+        {iconOne != undefined || iconTwo != undefined ? 
           <div>
             <button>
               {iconOne}
@@ -35,6 +35,8 @@ export function Search({ iconOne, iconTwo, onClickButtonVoltar, onClickIconOne, 
               {iconTwo}
             </button>
           </div>
+          : 
+          ''
         }
         
       </ContainerInput>
