@@ -5,9 +5,10 @@ import { Container } from "./style";
 
 export interface StepperProps{
   active?: boolean
+  className?: string
 }
 
-export function Stepper({active}: StepperProps){
+export function Stepper({active, className}: StepperProps){
 
   const [cont, setCont] = useState(0)
 
@@ -29,7 +30,7 @@ export function Stepper({active}: StepperProps){
 
 
   return(
-    <Container active>
+    <Container active className={className}>
       <button onClick={handleClickMinius} onBlur={handleBlur} >
         <SmallMinus className="stepper_icon"/>
       </button>
