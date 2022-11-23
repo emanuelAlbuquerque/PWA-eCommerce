@@ -1,7 +1,7 @@
 import { ButtonProps } from "../Types";
 import { Button, corVariantes } from "./styles";
 
-export const ButtonOutline = ({ text, icon, variant, onClick }: ButtonProps) => {
+export const ButtonOutline = ({ text, icon, variant, onClick, className }: ButtonProps) => {
 
   const { bgColor, bgBorder, color, mouseHover, focusMouse } = corVariantes[variant]
 
@@ -17,6 +17,7 @@ export const ButtonOutline = ({ text, icon, variant, onClick }: ButtonProps) => 
       focusBgBorder={focusMouse.focusBgBorder}
       focusColor={focusMouse.focusColor}
       onClick={onClick}
+      className={className}
     >
       {icon}
       {text}
