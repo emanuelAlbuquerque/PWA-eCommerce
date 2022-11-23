@@ -60,12 +60,32 @@ import { ButtonSingle } from './components/AssemblyButtons/Single/ButtonSingle'
 import { useState } from 'react'
 import { Accordian } from './components/Accordian/Accordian'
 import { CheckBox } from './components/Checkboxes/CheckBox'
-import { RadioButton } from './components/RadioButton.tsx/RadioButton'
+import { RadioButton } from './components/RadioButton/RadioButton'
 import { SideNavigation } from './components/SideNavigation/SideNavigation'
 import { HorizontalMenu } from './components/HorizontalMenu/HorizontalMenu'
 import { Stepper } from './components/Stepper/Stepper'
 import { Ratings } from './components/Ratings/Ratings'
 import { Search } from './components/Search/Search'
+import { Card } from './components/Card/Card'
+import exBag from './assets/img/exBag.png'
+import { TextField } from './components/TextField/TextField'
+import { OrderCardMobile } from './components/OrderCardMobile/OrderCardMobile'
+import { BannerSquare } from './components/Banners/Square/BannerSquare'
+
+import imgOculos from './assets/img/img-oculos.png'
+import imgPerfume from './assets/img/img-perfume.png'
+import imgRelogio from './assets/img/img-relogio.png'
+import imgBolsa from './assets/img/img-bolsa.png'
+
+import bolsaRosa from './assets/img/bolsaRosa.png'
+
+import { Handpicked } from './components/Handpicked/Handpicked'
+import { Products } from './components/CardsHorizontais/Products/Products'
+import { DefaultCard } from './components/CardVerticais/Default/DefaultCard'
+import { BannerWide } from './components/Banners/Wide/BannerWide'
+
+import bannerDefault from './assets/img/bannerDefault.png'
+import { BannerSmall } from './components/Banners/Small/BannerSmall'
 
 function App() {
 
@@ -207,7 +227,85 @@ function App() {
       <br />
       <br />
 
-      <Search iconOne={<Placeholder />} iconTwo={<Placeholder />}/>
+      <Search iconOne={<Placeholder />}/>
+
+      <br />
+      <br />
+
+      <Card 
+        descriptionProducts='Leather Coach Bag' 
+        nameProduct='PRADA'
+        precoComDesconto='$54.69' 
+        procoTotal='$69.99' 
+        totalDesconsto='20% OFF' 
+        img={exBag}
+      />
+
+      <br />
+      <br />
+
+      <TextField />
+
+      <br />
+      <br />
+
+      <OrderCardMobile date='September 5, 2020' idProduto='874522648' precoProduto='218.50'/>
+
+      <br />
+      <br />
+
+      <BannerSquare background={imgOculos} text='Sunglasses'/>
+      <br />
+      <BannerSquare background={imgPerfume} text='Sunglasses'/>
+      <br />
+      <BannerSquare background={imgRelogio} text='Sunglasses'/>
+      <br />
+      <BannerSquare background={imgBolsa} text='Sunglasses'/>
+
+      <br />
+      <br />
+
+      <Handpicked />
+
+      <br />
+      <br />
+
+      <Products
+        background={bolsaRosa}
+        defaultRatings={4}
+        ratings={43}
+        nameProduct="Grande"
+        descriptionProducts="Blossom Pouch"
+        precoComDesconto="39.49"
+        procoTotal="78.66"
+        totalDesconsto="50" />
+      <Products 
+        background={bolsaRosa}
+        defaultRatings={4}
+        ratings={43}
+        nameProduct="Grande"
+        descriptionProducts="Blossom Pouch"
+        precoComDesconto="39.49"
+        procoTotal="78.66"
+        totalDesconsto="50" buttonOn/>
+
+        <br />
+        <br />
+
+        <DefaultCard />
+
+        <br />
+        <br />
+
+        <BannerWide variant='funk' />
+        <BannerWide variant='spring' />
+        <BannerWide variant='makeup' />
+        <BannerWide variant='default' background={bannerDefault}/>
+
+        <br />
+        <br />
+
+        <BannerSmall variant='skincare'/>
     </div>
   )
 }
