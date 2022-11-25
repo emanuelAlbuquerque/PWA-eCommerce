@@ -21,6 +21,7 @@ export const Default: Story<ProductsProps> = () => (
         precoComDesconto="39.49" 
         procoTotal="78.66" 
         totalDesconsto="50"
+        quantidadeVendas={10}
     />
   </>
 )
@@ -36,6 +37,9 @@ export const onButton: Story<ProductsProps> = () => (
       descriptionProducts="Blossom Pouch"
       precoComDesconto="39.49"
       procoTotal="78.66"
-      totalDesconsto="50" buttonOn />
+      totalDesconsto="50" buttonOn 
+      quantidadeVendas={10}
+    />
+
   </>
 )

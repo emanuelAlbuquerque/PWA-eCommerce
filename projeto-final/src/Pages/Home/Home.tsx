@@ -98,8 +98,9 @@ export function Home(){
             New Arrivals
           </h2>
           <button onClick={(e) => {
-            // e.currentTarget.parentElement?.nextSibling.scrollBy(100, 0)
-              // e.currentTarget.parentElement
+            if(e.currentTarget.parentElement?.nextSibling){
+              e.currentTarget.parentElement?.nextSibling.scrollBy(100, 0)
+            }
           }}>
             View All
             <ChevronRight />
