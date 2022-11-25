@@ -1,0 +1,116 @@
+[
+  {
+    "id": "1",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 0
+    
+  },
+  {
+    "id": "2",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 0
+  },
+  {
+    "id": "3",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 0
+  },
+  {
+    "id": "4",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 0
+  },
+  {
+    "id": "5",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 0
+    
+  },
+  {
+    "id": "6",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 8
+  },
+  {
+    "id": "7",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 0
+    
+  },
+  {
+    "id": "8",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 0
+    
+  },
+  {
+    "id": "9",
+    "nome": "Grande",
+    "descricao": "Blossom Pouch",
+    "img": "src/assets/img/bolsaRosa.png",
+    "preco": "39.49",
+    "precoTotal": "78.66",
+    "desconto": "50",
+    "ratings": 43,
+    "defaultRatings": 4,
+    "quantidadeVendas": 9 
+    
+  }
+]
+
