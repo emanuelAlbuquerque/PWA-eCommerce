@@ -1,4 +1,5 @@
 import { Container } from "./styles";
+import { NavLink } from "react-router-dom";
 
 
 export function NavBar(){
@@ -6,7 +7,9 @@ export function NavBar(){
     <Container>
       <ul>
         <li>
-          <a href="">Handbags</a>  
+          <NavLink to="/categoryPage">
+            Handbags
+          </NavLink>  
         </li>
         <li>
           <a href="">Watches</a>

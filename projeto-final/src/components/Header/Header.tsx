@@ -8,7 +8,17 @@ import { Theme } from "../../styles/Theme";
 import { NavBar } from "./NavBar/Navbar";
 import { ContainerNavBar, ContainerPesquisa, HeaderContainer } from "./styles";
 
-export function Header(){
+interface HeaderProps{
+  setModalBagOn?: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export function Header({  setModalBagOn }: HeaderProps){
+
+  const handleClickBag = () => {
+    if (setModalBagOn){
+      setModalBagOn(true)
+    }
+  }
 
   const [value, setValue] = useState('')
 
@@ -38,7 +48,7 @@ export function Header(){
           <button className="icons">
             <Profile color={Theme.Colors.primary} />
           </button>
-          <button className="icons">
+          <button className="icons" onClick={handleClickBag}>
             <Bag color={Theme.Colors.primary} />
           </button>
         </div>
