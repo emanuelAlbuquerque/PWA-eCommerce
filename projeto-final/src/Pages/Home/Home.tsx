@@ -29,19 +29,37 @@ import { FooterMobile } from "../../components/FooterMobile/FooterMobile";
 import { BottomNavigation } from "../../components/BottomNavigation/BottomNavigation";
 import { Category } from "../../components/Category/Category";
 import { Handbags } from "../../assets/Icons/Product/Handbags";
+import { BarraNavegacao, ContainerModalBag } from "../CategoryPage/style";
+import { useState } from "react";
+import { ArrowLeft } from "../../assets/Icons/General/ArrowLeft";
+import { DefaultCard } from "../../components/CardVerticais/Default/DefaultCard";
+import { ContainerButtonFilterMobile, ContainerFiltro, ContainerInfosProdutos, ContainerLista, ContainerListaProdutos, ContainerModalSort, ContainerTitulo, InfosProdutos, ModeloPagina, ModeloPaginaButtons, ModeloPaginaInputs, Produtos, TotalProdutos } from "../CategoryPage/style";
+import bolsa from '../../assets/img/bolsa.png'
+import { TextField } from "../../components/TextField/TextField";
+import { ButtonPrimary } from "../../components/Buttons/Primary/ButtonPrimary";
 
 export function Home(){
+
+  const [modalBagOn, setModalBagOn] = useState(false)
+
+  const handleOnClickBagOff = () => {
+    setModalBagOn(false)
+  } 
+
   return(
     <>
-      <Header />
-      <AppBar 
-        variant="Search" 
-        iconeEsquerda={<Menu />} 
-        iconeOne={<AddToHomeScreen />} 
-        iconeTwo={<SearchIcon />} 
-        iconeTree={<NotificationIcon />} 
-        text="Home" 
-      />
+      <Header setModalBagOn={setModalBagOn} />
+
+      <BarraNavegacao>
+        <AppBar 
+          variant="Search" 
+          iconeEsquerda={<Menu />} 
+          iconeOne={<AddToHomeScreen />} 
+          iconeTwo={<SearchIcon />} 
+          iconeTree={<NotificationIcon />} 
+          text="Home" 
+        />
+      </BarraNavegacao>
 
       <HomeBanner text='We are currently experiencing local customs clearance delays. For the latest updates, please check your order status here' />
 
@@ -179,6 +197,61 @@ export function Home(){
           
 
       <BottomNavigation />
+
+
+      <ContainerModalBag modalBagOn={modalBagOn}>
+        <div className="modalBag">
+          <AppBar
+            text="Back"
+            iconeEsquerda={<ArrowLeft />}
+            variant="Search"
+            className="modalBag_titulo"
+            onClickIconeEsqueda={handleOnClickBagOff}
+          />
+
+          <DefaultCard
+            nomeProduto="Prada"
+            descricaoProduto="Leather Coach Bag"
+            precoProduto="54.69"
+            quantidadeProduto="1"
+            img={bolsa}
+            className="card"
+          />
+          <DefaultCard
+            nomeProduto="Prada"
+            descricaoProduto="Leather Coach Bag"
+            precoProduto="54.69"
+            quantidadeProduto="1"
+            img={bolsa}
+            className="card"
+          />
+
+          <ContainerInfosProdutos>
+            <InfosProdutos>
+              <p>Subtotal:</p>
+              <p>$109.38</p>
+            </InfosProdutos>
+            <InfosProdutos>
+              <p>Tax:</p>
+              <p>$2.00</p>
+            </InfosProdutos>
+            <InfosProdutos>
+              <h2>Total:</h2>
+              <h2>$111.38</h2>
+            </InfosProdutos>
+          </ContainerInfosProdutos>
+
+          <div className="input_code">
+            <TextField />
+          </div>
+
+          <div className="buttonModalBag">
+            <ButtonPrimary variant="default" text="Place Order" />
+          </div>
+
+          <a href="" className="continue">Continue Shopping</a>
+        </div>
+      </ContainerModalBag>
     </>
   )
 }
