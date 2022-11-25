@@ -1,5 +1,4 @@
-import { ReactNode, useState } from "react";
-import { Theme } from "../../../styles/Theme";
+import { ReactNode } from "react";
 import { Container } from "./style";
 
 export interface NavigationItemProps{
@@ -9,6 +8,7 @@ export interface NavigationItemProps{
   icon?: ReactNode
   text?: string
   active?: 'active' | 'disable'
+  onClick?: () => void
 }
 
 
@@ -23,26 +23,45 @@ export function buttonActive(e: React.MouseEvent<HTMLElement, MouseEvent>) {
   }
   
   e.currentTarget.children[0].classList.add('active')
-
-  navegaClick(e)
+  // navegaClick(e)
 }
 
-function navegaClick(e: React.MouseEvent<HTMLElement, MouseEvent>){
-    if(e.currentTarget.classList.contains('home')){
-      console.log('pagina home')
-    }
-    if(e.currentTarget.classList.contains('profile')){
-      console.log('pagina profile')
-    }
-    if(e.currentTarget.classList.contains('bag')){
-      console.log('pagina bag')
-    }
-    if(e.currentTarget.classList.contains('categories')){
-      console.log('pagina categories')
-    }
-}
+// function navegaClick(e: React.MouseEvent<HTMLElement, MouseEvent>){
+//     if(e.currentTarget.classList.contains('home')){
+     
+//     }
+//     if(e.currentTarget.classList.contains('profile')){
+//       console.log('pagina profile')
+//     }
+//     if(e.currentTarget.classList.contains('bag')){
+//       console.log('/categoryPage')
+//     }
+//     if(e.currentTarget.classList.contains('categories')){
+//       console.log('pagina categories')
+//     }
+// }
 
-export function NavigationItem({ className, icon, text, id, theme, active = 'disable' }: NavigationItemProps){
+export function NavigationItem({ className, icon, text, id, theme, active = 'disable', onClick }: NavigationItemProps){
+
+
+  function buttonActive(e: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const paiElement = e.currentTarget.parentElement?.children
+
+    if (paiElement) {
+      Array.from(paiElement).forEach((filho) => {//Tranforma a coleção em array, e reseta as classes.
+        filho.children[0].classList.remove('active')
+        filho.children[0].classList.add('disable')
+      })
+    }
+
+    e.currentTarget.children[0].classList.add('active')
+
+    if(onClick){
+      onClick()
+    }
+    // navegaClick(e)
+  }
+
   return(
     <Container onClick={buttonActive} className={className} id={id} theme={theme}>
       <div className={active}>

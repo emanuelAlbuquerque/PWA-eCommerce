@@ -1,3 +1,4 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import { Profile } from "../../assets/Icons/General/Profile";
 import { Bag } from "../../assets/Icons/Navigation/Bag";
 import { Categories } from "../../assets/Icons/Navigation/Categories";
@@ -10,15 +11,21 @@ export interface BottomNavigationProps{
 }
 
 export function BottomNavigation({ theme = 'light' }: BottomNavigationProps){
+  const navigate = useNavigate()
+
+  const onClickHome = () => navigate('/')
+  const onClickCategoryPage = () => navigate('/categoryPage')
+
   return(
     <Nav theme={theme}>
-        <NavigationItem 
-          className="home" 
-          icon={<HomeIcon />} 
-          text="Home"
-          id="home" 
-          theme={theme}
-        />
+          <NavigationItem 
+            className="home" 
+            icon={<HomeIcon />} 
+            text="Home"
+            id="home" 
+            theme={theme}
+            onClick={onClickHome}
+          />
         
         <NavigationItem 
           className="categories" 
@@ -36,13 +43,14 @@ export function BottomNavigation({ theme = 'light' }: BottomNavigationProps){
           theme={theme}
         />
 
-        <NavigationItem 
-          className="bag"  
-          icon={<Bag />}
-          text="Bag" 
-          id="bag"
-          theme={theme}
-        />
+          <NavigationItem 
+            className="bag"  
+            icon={<Bag />}
+            text="Bag" 
+            id="bag"
+            theme={theme}
+            onClick={onClickCategoryPage}
+          />
     </Nav>
   )
 }
