@@ -15,6 +15,10 @@ export const Button = styled.button`
 
   background: ${Theme.Colors.bright};
 
+  @media screen and (min-width: 1024px){
+    display: none;
+  }
+
   p{
     font-size: ${Theme.Typography.TitleMedium.size};
     font-weight: ${Theme.Typography.TitleMedium.weight};

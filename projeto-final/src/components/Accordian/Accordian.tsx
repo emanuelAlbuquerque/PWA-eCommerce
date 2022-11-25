@@ -12,11 +12,7 @@ export function Accordian({children}: AccordianProps){
   const [expandOn, setExpandOn] = useState(false)
 
     const expand = () => {
-        if(expandOn){
-          setExpandOn(false)
-        }else{
-          setExpandOn(true)
-        }
+        setExpandOn(!expandOn)
   }
 
   return(
