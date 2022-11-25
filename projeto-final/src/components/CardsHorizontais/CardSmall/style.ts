@@ -2,19 +2,15 @@ import styled from "styled-components";
 import { Theme } from "../../../styles/Theme";
 import { NameProdutos, PrecoProdutos } from "../../Card/style";
 
-interface ContainerProps{
+interface ContainerProps {
   background: string
-  quantidadeVendas: number
 }
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 155px;
+  max-width: 136px;
 
-  .icon_bag path{
-    stroke: ${Theme.Colors.primary};
-    fill: none;
-  }
+  flex-shrink: 0;
 
   @media screen and (min-width: 1024px){
     max-width: 285px;
@@ -23,56 +19,29 @@ export const Container = styled.div`
 
 export const Background = styled.div<ContainerProps>`
   width: 100%;
-  max-width: 155px;
-  height: 155px;
+  max-width: 136px;
+  height: 136px;
   padding: .5rem;
   border-radius: 8px;
   background-image: ${(props) => `url(${(props.background)})`};
-  
-  div{
-    justify-content: end;
-    ${(props) => props.quantidadeVendas >= 10 ? 'display: flex;' : 'display: none;' }
 
-
-    p{
-      background-color: ${Theme.Colors.highLight};
-      color: ${Theme.Colors.bright};
-      padding: .4rem;
-      border-radius: 4px;
-      font-size: ${Theme.Typography.LinkSmall.size};
-      font-weight: ${Theme.Typography.LinkSmall.weight};
-
-       @media screen and (min-width: 1024px){
-        font-size: ${Theme.Typography.TitleSmall.size};
-        font-weight: ${Theme.Typography.TitleSmall.weight};
-       }
-    }
-  }
-
-  @media screen and (min-width: 1024px){
-    max-width: 285px;
-    height: 285px;
-
-    background-position: center;
+   @media screen and (min-width: 1024px){
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
-
-    div{
-      p{
-        padding: .7rem 1.5rem;
-      }
-    }
+    max-width: 286px;
+    height: 286px;
   }
 `
 
-interface ProdutosDetalhesProps{
+interface ProdutosDetalhesProps {
   curtidas: boolean
 }
-
 
 export const ProdutosDetalhes = styled.div<ProdutosDetalhesProps>`
   display: flex;
   justify-content: space-between;
+  flex-shrink: 0;
   margin-top: 10px;
 
   button{
@@ -80,6 +49,8 @@ export const ProdutosDetalhes = styled.div<ProdutosDetalhesProps>`
     border: none;
 
     cursor: pointer;
+
+    align-self: start;
 
     .icon_curtida{
       fill: ${(props) => props.curtidas ? `${Theme.Colors.lightRed}` : 'none'}

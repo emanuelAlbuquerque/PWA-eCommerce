@@ -15,10 +15,13 @@ export interface ProductsProps{
   totalDesconsto?:string
   ratings?: number | string
   defaultRatings: number
+  className?: string
+  quantidadeVendas: number
 }
 
 export function Products(
   {
+    className,
     background, 
     buttonOn, 
     descriptionProducts, 
@@ -27,15 +30,16 @@ export function Products(
     procoTotal, 
     totalDesconsto,
     ratings,
-    defaultRatings
+    defaultRatings,
+    quantidadeVendas
   }: ProductsProps)
 {
 
   const [curtidas, setCurtidas] = useState(false)
 
   return(
-    <Container>
-      <Background background={background}>
+    <Container className={className}>
+      <Background background={background} quantidadeVendas={quantidadeVendas}>
         <div>
           <p>Trending</p>
         </div>
