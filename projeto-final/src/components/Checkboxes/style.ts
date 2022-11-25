@@ -8,6 +8,8 @@ interface ContainerProps{
 
 export const Container = styled.div<ContainerProps>`
 
+    margin-bottom: 10px;
+
     input{
       display: none;
     }

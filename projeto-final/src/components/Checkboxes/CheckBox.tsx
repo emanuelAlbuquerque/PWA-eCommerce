@@ -13,15 +13,21 @@ export interface CheckBoxProps{
 export function CheckBox({ label, name, checked, hover, ...props }: CheckBoxProps){
   const defaultChecked = checked ? checked : false;
   const [isChecked, setChecked] = useState(defaultChecked)
-  
+  const [value, setValue] = useState('')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(!isChecked)
+    setValue(e.currentTarget.value)
+  }
   return(
     <Container url={acept} hover={hover}>
       <input
         type="checkbox"
         name={name}
         id={name}
+        value={value}
         checked={isChecked}
-        onChange={() => setChecked(!isChecked)}
+        onChange={handleChange}
         {...props}
         />
         <label htmlFor={name}>
