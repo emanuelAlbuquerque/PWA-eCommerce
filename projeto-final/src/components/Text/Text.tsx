@@ -6,11 +6,12 @@ export interface TextTypesProps{
   children: ReactNode
   variant: 'DisplayLarge' | 'DisplayMedium' | 'DisplaySmall' | 'TitleMedium' | 'TitleRegular' | 'BodyMedium'  |         'BodyRegular' | 'LabelLarge' | 'LabelMedium' | 'LabelSmall' | 'Link'
   color?: string
+  className?: string
 }
 
-export function TextTypes({ children, variant, color = Theme.Colors.dark}: TextTypesProps){
+export function TextTypes({ children, variant, color = Theme.Colors.highEmphasis, className}: TextTypesProps){
   return(
-    <TextTag variant={variant} color={color} className="conponent_text">
+    <TextTag variant={variant} color={color} className={className}>
       {children}
     </TextTag>
   )
