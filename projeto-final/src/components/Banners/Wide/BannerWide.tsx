@@ -22,7 +22,9 @@ export function BannerWide({variant, background}: BannerWideProps){
           <div>
             <h1>Carry your Funk</h1>
             <p>Trendy handbags collection for your party animal</p>
-            <ButtonPrimary variant="default" text="See more" icon={<ArrowRight />}/>
+            <div>
+              <ButtonPrimary variant="default" text="See more" icon={<ArrowRight className="arrow"/>}/>
+            </div>
           </div>
         </ContainerFunk>
       }
