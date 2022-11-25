@@ -3,16 +3,10 @@ import { Theme } from "../../../styles/Theme";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 300px;
-  height: 120px;
 
   display: flex;
   gap: 10px;
 
-  @media screen and (min-width: 1024px){
-    max-width: 385px;
-    height: 114px;
-  }
 
   img{
     width: 120px;

@@ -9,6 +9,8 @@ export interface DefaultCardProps{
   descricaoProduto: string
   precoProduto: string
   quantidadeProduto: string
+  onClick?: () => void,
+  className?: string
 }
 
 export function DefaultCard(
@@ -17,16 +19,18 @@ export function DefaultCard(
     nomeProduto, 
     precoProduto,
     quantidadeProduto,
-    img
+    img,
+    onClick,
+    className
   }: DefaultCardProps)
 {
   return(
-    <Container>
+    <Container className={className}>
       <img src={img} alt="" />
       <div>
         <div className="name_products">
           <h2>{nomeProduto}</h2>
-          <button>
+          <button onClick={onClick}>
             <CrossSmall />
           </button>
         </div>
