@@ -13,6 +13,14 @@ export const ContainerTitulo = styled.h1`
   }
 `
 
+export const BarraNavegacao = styled.div`
+  display: block;
+
+  @media screen and (min-width: 1024px){
+    display: none;
+  }
+`
+
 export const ContainerListaProdutos = styled.main`
   display: flex;
   gap: 1rem;
@@ -20,9 +28,6 @@ export const ContainerListaProdutos = styled.main`
   padding: 1rem;
 
   width: 100%;
-
-  
-
 `
 
 export const ContainerFiltro = styled.div`
@@ -138,7 +143,7 @@ export const ContainerButtonFilterMobile = styled.div`
   padding: 1rem;
   background-color: ${Theme.Colors.bright};
 
-  display: flex;
+  display: none;
   align-items: center;
 
   position: fixed;
@@ -146,7 +151,6 @@ export const ContainerButtonFilterMobile = styled.div`
 
   button{
     width: 50%;
-
     border: none;
     background-color: ${Theme.Colors.tranparent};
     cursor: pointer;
@@ -154,6 +158,10 @@ export const ContainerButtonFilterMobile = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media screen and (max-width: 425px){
+    display: flex;
   }
 `
 
@@ -181,7 +189,6 @@ export const ContainerModalSort = styled.div<ContainerModalSortProps>`
     border-radius: 2rem 2rem 0 0;
     width: 100%;
     padding: 1rem ;
-    z-index: 1;
 
     .fechaModal{
       display: flex;
@@ -204,5 +211,83 @@ export const ContainerModalSort = styled.div<ContainerModalSortProps>`
     div{
       margin: 1rem 0 ;
     }
+  }
+`
+
+interface ContainerModalBagProps{
+  modalBagOn: boolean
+}
+
+export const ContainerModalBag = styled.div<ContainerModalBagProps>`
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, .3);
+
+  ${props => props.modalBagOn === true ? 'display: flex;' : 'display: none;'}
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .modalBag{
+    width: 395px;
+    background-color: ${Theme.Colors.bright};
+
+    position: absolute;
+    top: 60px;
+    right: 15px;
+
+    .modalBag_titulo{
+      padding: 2rem;
+    }
+
+    .card{
+      padding: 1rem 1rem 2.5rem 1rem;
+      border-bottom: 1px solid ${Theme.Colors.lightGray};
+    }
+
+    .input_code{
+      width: 100%;
+      padding: 1rem;
+    }
+    
+    .buttonModalBag{
+      padding: 1rem;
+    }
+
+    .continue{
+      display: block;
+      padding: 1rem 0 .5rem 0;
+      text-decoration: underline;
+      color: ${Theme.Colors.primary};
+      font-size: ${Theme.Typography.BodyMedium.size};
+      font-weight: ${Theme.Typography.BodyMedium.weight};
+      text-align: center;
+    }
+  }
+`
+export const ContainerInfosProdutos = styled.div`
+    padding: 1rem;
+`
+
+export const InfosProdutos = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  p{
+    font-size: ${Theme.Typography.LabelLarge.size};
+    font-weight: ${Theme.Typography.LabelLarge.weight};
+    color: ${Theme.Colors.highEmphasis};
+  }
+
+  h2{
+    font-size: ${Theme.Typography.BodyMedium.size};
+    font-weight: ${Theme.Typography.BodyMedium.weight};
+    color: ${Theme.Colors.highEmphasis};
   }
 `
