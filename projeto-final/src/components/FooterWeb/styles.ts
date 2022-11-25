@@ -6,17 +6,14 @@ export const Footer = styled.footer`
     background-color: ${Theme.Colors.primary};
     padding: 2rem;
 
-    display: flex;
+    display: none;
     justify-content: space-between;
 
+    margin: 2rem 0 0 0;
 
     
-    @media (max-width: 720px) {
-        display: block;
-    }
-    
-    @media (max-width: 425px) {
-        display: none;
+    @media (min-width: 1024px) {
+        display: flex;
       }
 `
 
