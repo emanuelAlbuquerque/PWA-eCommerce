@@ -11,4 +11,11 @@ export const Nav = styled.nav<NavProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  position: fixed;
+  bottom:0px;
+
+  @media screen and (min-width: 1024px){
+    display: none;
+  }
 `

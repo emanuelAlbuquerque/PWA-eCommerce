@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { Profile } from "../../assets/Icons/General/Profile";
 import { Bag } from "../../assets/Icons/Navigation/Bag";
 import { Categories } from "../../assets/Icons/Navigation/Categories";
-import { Home } from "../../assets/Icons/Navigation/Home";
+import { HomeIcon } from "../../assets/Icons/Navigation/HomeIcon";
 import { NavigationItem } from "./ButtonNavigationItem/NavigationItem";
 import { Nav } from "./style";
 
@@ -15,7 +14,7 @@ export function BottomNavigation({ theme = 'light' }: BottomNavigationProps){
     <Nav theme={theme}>
         <NavigationItem 
           className="home" 
-          icon={<Home />} 
+          icon={<HomeIcon />} 
           text="Home"
           id="home" 
           theme={theme}
