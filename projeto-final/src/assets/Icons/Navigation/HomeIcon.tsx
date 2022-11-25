@@ -2,7 +2,7 @@ import * as React from "react"
 import { Theme } from "../../../styles/Theme"
 import { IconProps } from "../Product/SkinCare"
 
-export function Home({color = 'none'}: IconProps) {
+export function HomeIcon({color = 'none'}: IconProps) {
   return (
     <svg
       width={20}
