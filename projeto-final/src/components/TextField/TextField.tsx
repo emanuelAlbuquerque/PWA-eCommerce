@@ -1,12 +1,16 @@
 import { useState } from "react"
 import { Container } from "./style"
 
-export function TextField(){
+interface TextFieldProps{
+  className?: string;
+}
+
+export function TextField({className}: TextFieldProps){
 
   const [value, setValue] = useState('')
 
   return(
-    <Container>
+    <Container className={className}>
       <input 
         type="text" 
         placeholder="Enter valid pincode"

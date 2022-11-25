@@ -3,7 +3,6 @@ import { Theme } from "../../styles/Theme";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 330px;
   height: 48px;
   padding: 0 1rem;
 
