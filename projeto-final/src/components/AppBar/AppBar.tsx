@@ -3,8 +3,11 @@ import { Container } from "./style"
 
 export interface AppBarProps{
   variant?: 'PageTitle' | 'Search'
-  iconeEsquerda?: ReactNode
   text?: string
+  className?:string
+  iconeEsquerda?: ReactNode
+  onClickIconeEsqueda?: () => void
+
 
   iconeOne?: ReactNode
   iconeTwo?: ReactNode
@@ -25,12 +28,14 @@ export function AppBar(
     onClickIconeOne,
     onClickIconeTree, 
     onClickIconeTwo, 
-    text
+    onClickIconeEsqueda,
+    text,
+    className
   }: AppBarProps){
   return(
-    <Container variant={variant}>
+    <Container variant={variant} className={className}>
       <div>
-        <button>
+        <button onClick={onClickIconeEsqueda}>
           {iconeEsquerda}
         </button>
         <p>{text}</p>

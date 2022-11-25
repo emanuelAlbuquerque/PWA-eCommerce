@@ -14,10 +14,6 @@ export const Container = styled.div <ContainerProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @media screen and (min-width: 1024px){
-    display: none;
-  }
     
   
   
