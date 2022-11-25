@@ -12,6 +12,7 @@ export const Theme = {
     dark: '#13101E',
     bright: '#FFFFFF',
     grey: '#F1F1F1',
+    light: '#F0F0F0',
     lightText: '#B6B6B6',
     highEmphasis: '#171520',
     lowEmphasis: '#626262',
@@ -21,9 +22,17 @@ export const Theme = {
     rosa: '#A53F64'
   },
   Typography: {
+    DisplayUtraLarge: {
+      weight: '800',
+      size: '60px'
+    },
     DisplayLarge: {
       weight: '700',
       size: '40px'
+    },
+    DisplayRegular: {
+      weight: '500',
+      size: '28px'
     },
     DisplayMedium: {
       weight: '600',
@@ -32,6 +41,10 @@ export const Theme = {
     DisplaySmall: {
       weight: '600',
       size: '20px'
+    },
+    TitleUltraLarge: {
+      weight: '700',
+      size: '52px'
     },
     TitleLarge: {
       weight: '800',
@@ -48,6 +61,10 @@ export const Theme = {
     TitleSmall: {
       weight: '500',
       size: '14px'
+    },
+    BodyUltraLarge: {
+      weight: '400',
+      size: '30px',
     },
     BodyLarge: {
       weight: '800',
