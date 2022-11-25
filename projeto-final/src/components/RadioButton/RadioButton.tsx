@@ -19,8 +19,6 @@ export function RadioButton({ label, name, checked, value, id,  ...props }: Radi
   const isRadioSelected = (valor: string): boolean => selectRadioBtn === valor
   const handleRadioClick = (e: ChangeEvent<HTMLInputElement>): void => setSelectRadioBtn(e.currentTarget.value)
 
-  console.log(selectRadioBtn)
-
   return (
       <Container hover>
         <input
