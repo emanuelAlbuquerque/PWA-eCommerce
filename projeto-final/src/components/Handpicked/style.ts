@@ -3,7 +3,7 @@ import { Theme } from "../../styles/Theme";
 
 export const Container = styled.div`
   width: 100%;
-  padding: 1rem;
+  padding: 2rem 1rem;
   background-color: ${Theme.Colors.primary};
 
     .imagens{
