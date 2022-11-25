@@ -11,36 +11,12 @@ export default {
 export const PageTitle: Story<AppBarProps> = () => (
   <>
     <GlobalStyle />
-    <AppBar variant="PageTitle">
-      <div>
-        <button>
-          <Placeholder />
-        </button>
-        <p>Search</p>
-      </div>
-      <div>
-        <button><Placeholder /></button>
-        <button><Placeholder /></button>
-        <button><Placeholder /></button>
-      </div>
-    </AppBar >
+    <AppBar variant="PageTitle" iconeEsquerda={<Placeholder />} iconeOne={<Placeholder />} iconeTwo={<Placeholder />} iconeTree={<Placeholder />} text="Seacrh"/>
   </>
 )
 export const Search: Story<AppBarProps> = () => (
   <>
     <GlobalStyle />
-    <AppBar variant="Search">
-      <div>
-        <button>
-          <Placeholder />
-        </button>
-        <p>Search</p>
-      </div>
-      <div>
-        <button><Placeholder /></button>
-        <button><Placeholder /></button>
-        <button><Placeholder /></button>
-      </div>
-    </AppBar >
+    <AppBar variant="Search" iconeEsquerda={<Placeholder />} iconeOne={<Placeholder />} iconeTwo={<Placeholder />} iconeTree={<Placeholder />} text="Seacrh" />
   </>
 )

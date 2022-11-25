@@ -15,6 +15,11 @@ export const Container = styled.div <ContainerProps>`
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (min-width: 1024px){
+    display: none;
+  }
+    
+  
   
   div{
     display: flex;
@@ -53,7 +58,7 @@ export const Container = styled.div <ContainerProps>`
     }
 
     .icon{
-      fill: ${Theme.Colors.primary}
+      stroke: ${Theme.Colors.primary}
     }
   }
 
