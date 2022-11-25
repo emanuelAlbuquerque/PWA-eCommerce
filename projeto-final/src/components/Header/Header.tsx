@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { HeaderIcon } from "../../assets/Icons/General/HeaderIcon";
 import { Profile } from "../../assets/Icons/General/Profile";
 import { SearchIcon } from "../../assets/Icons/General/SearchIcon";
@@ -8,6 +9,9 @@ import { NavBar } from "./NavBar/Navbar";
 import { ContainerNavBar, ContainerPesquisa, HeaderContainer } from "./styles";
 
 export function Header(){
+
+  const [value, setValue] = useState('')
+
   return(
     <HeaderContainer>
       <ContainerNavBar>
@@ -18,7 +22,13 @@ export function Header(){
       <ContainerPesquisa>
         <div className="container_input_pesquisa">
           <SearchIcon />
-          <input type="text" className="input_pesquisa" placeholder="Search for products or brands....."/>
+          <input 
+            type="text" 
+            className="input_pesquisa" 
+            placeholder="Search for products or brands....."
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
         </div>
 
         <div className="container_icons">

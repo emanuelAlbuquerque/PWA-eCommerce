@@ -5,11 +5,17 @@ export const HeaderContainer = styled.header`
   width: 100%;
   padding: 1rem;
 
-  display: flex;
+  
+  display: none;
   justify-content: space-between;
   align-items: center;
 
   background-color: ${Theme.Colors.bright};
+
+
+  @media screen and (min-width: 1024px){
+    display: flex;
+  }
 `
 
 export const ContainerNavBar = styled.div`
