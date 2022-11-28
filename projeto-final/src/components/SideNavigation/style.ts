@@ -8,11 +8,11 @@ interface ContainerProps{
 
 export const Container = styled.button<ContainerProps>`
 
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
 
-  padding: .8rem 0;
+  padding: 1rem;
   width: 100%;
 
   font-size: ${Theme.Typography.BodyMedium.size};
@@ -20,12 +20,15 @@ export const Container = styled.button<ContainerProps>`
   color: ${(props) => props.click ? Theme.Colors.primary : Theme.Colors.dark};
 
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);;
   cursor: pointer;
-  background-color: transparent;
+  background-color: ${Theme.Colors.bright};
 
   .side-navigation__icon path{
     stroke: ${(props) => props.click ? Theme.Colors.primary : Theme.Colors.dark};
+  }
+
+  @media screen and (max-width: 425px){
+    display: flex;
   }
 
 `

@@ -15,9 +15,9 @@ export function SideNavigation({ text, onClick, selected, id}: SideNavigationPro
   const [click, setClick] = useState(defaultSelect)
 
   function handleOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>):void {
-      if(onClick){
-        onClick()
-      }
+    if(onClick){
+      onClick()
+    }
   }
 
   const handleOnBlur = () => {
@@ -25,7 +25,7 @@ export function SideNavigation({ text, onClick, selected, id}: SideNavigationPro
   }
 
   return (
-    <Container onClick={handleOnClick} click={click} id={id} onBlur={handleOnBlur} onFocus={() => setClick(!click)}>
+    <Container onClick={handleOnClick} click={click} onBlur={handleOnBlur} onFocus={() => setClick(!click)}>
       <p>{text}</p>
       <ChevronRight className="side-navigation__icon"/>
     </Container>
