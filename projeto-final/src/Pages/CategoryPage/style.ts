@@ -63,7 +63,6 @@ export const ModeloPaginaButtons = styled.div`
   gap: 8px;
   
   button{
-    background-color: ${Theme.Colors.tranparent};
     border: none;
     cursor: pointer;
     
@@ -73,6 +72,22 @@ export const ModeloPaginaButtons = styled.div`
 
     height: 24px;
     width: 24px;
+  }
+
+  .active{
+    background-color: ${Theme.Colors.primary};
+
+    .icon{
+      fill: ${Theme.Colors.bright}
+    }
+  }
+
+  .disable{
+    background-color: ${Theme.Colors.tranparent};
+
+    .icon{
+      fill: #B6B6B6;
+    }
   }
 
   p{
@@ -113,13 +128,32 @@ export const ModeloPaginaInputs = styled.div`
   }
 `
 
-export const Produtos = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+interface ProdutosProps{
+  modelPage: boolean
+}
 
-  .prosutos_item{
-    margin: 1rem 0;
+export const Produtos = styled.div<ProdutosProps>`
+  height: auto;
+  margin-top: 1rem;
+
+  ${(props) => props.modelPage ? 'display: grid;' : 'display: block;'}
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1rem;
+
+
+
+  @media screen and (max-width: 425px){
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+
+    .produtos_item{
+      margin: 0;
+      justify-self: center;
+    }
   }
 `
 
@@ -211,83 +245,5 @@ export const ContainerModalSort = styled.div<ContainerModalSortProps>`
     div{
       margin: 1rem 0 ;
     }
-  }
-`
-
-interface ContainerModalBagProps{
-  modalBagOn: boolean
-}
-
-export const ContainerModalBag = styled.div<ContainerModalBagProps>`
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, .3);
-
-  ${props => props.modalBagOn === true ? 'display: flex;' : 'display: none;'}
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-
-  .modalBag{
-    width: 395px;
-    background-color: ${Theme.Colors.bright};
-
-    position: absolute;
-    top: 60px;
-    right: 15px;
-
-    .modalBag_titulo{
-      padding: 2rem;
-    }
-
-    .card{
-      padding: 1rem 1rem 2.5rem 1rem;
-      border-bottom: 1px solid ${Theme.Colors.lightGray};
-    }
-
-    .input_code{
-      width: 100%;
-      padding: 1rem;
-    }
-    
-    .buttonModalBag{
-      padding: 1rem;
-    }
-
-    .continue{
-      display: block;
-      padding: 1rem 0 .5rem 0;
-      text-decoration: underline;
-      color: ${Theme.Colors.primary};
-      font-size: ${Theme.Typography.BodyMedium.size};
-      font-weight: ${Theme.Typography.BodyMedium.weight};
-      text-align: center;
-    }
-  }
-`
-export const ContainerInfosProdutos = styled.div`
-    padding: 1rem;
-`
-
-export const InfosProdutos = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-
-  p{
-    font-size: ${Theme.Typography.LabelLarge.size};
-    font-weight: ${Theme.Typography.LabelLarge.weight};
-    color: ${Theme.Colors.highEmphasis};
-  }
-
-  h2{
-    font-size: ${Theme.Typography.BodyMedium.size};
-    font-weight: ${Theme.Typography.BodyMedium.weight};
-    color: ${Theme.Colors.highEmphasis};
   }
 `
