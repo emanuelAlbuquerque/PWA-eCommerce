@@ -4,6 +4,7 @@ import { ButtonOutline } from "../../Buttons/Outline/ButtonOutline";
 import { Avaliacao, Background, Container, NomeProdutos, PrecoProducts, ProdutosDetalhes } from "./style";
 import { useState } from "react";
 import { Ratings } from "../../Ratings/Ratings";
+import { Link } from "react-router-dom";
 
 export interface ProductsProps{
   background: string
@@ -17,6 +18,7 @@ export interface ProductsProps{
   defaultRatings: number
   className?: string
   quantidadeVendas: number
+  id: string;
 }
 
 export function Products(
@@ -31,46 +33,49 @@ export function Products(
     totalDesconsto,
     ratings,
     defaultRatings,
-    quantidadeVendas
+    quantidadeVendas,
+    id
   }: ProductsProps)
 {
 
   const [curtidas, setCurtidas] = useState(false)
 
   return(
-    <Container className={className}>
-      <Background background={background} quantidadeVendas={quantidadeVendas}>
-        <div>
-          <p>Trending</p>
-        </div>
-      </Background>
-      <ProdutosDetalhes curtidas={curtidas}>
-        <NomeProdutos>
-          <h1>{nameProduct}</h1>
-          <h2>{descriptionProducts}</h2>
-        </NomeProdutos>
-        <button onClick={() => setCurtidas(!curtidas)}>
-          <Hearth className="icon_curtida"/>
-        </button>
-      </ProdutosDetalhes>
-      <Avaliacao>
-        <Ratings defaultValue={defaultRatings}/>
-        <p>{ratings} Ratings</p>
-      </Avaliacao>
-      <PrecoProducts>
-        <h2>${precoComDesconto}</h2>
-        <h3>${procoTotal}</h3>
-        <p>{totalDesconsto}% OFF</p>
-      </PrecoProducts>
+    <Link to={`/product/${id}`}>
+      <Container className={className}>
+        <Background background={background} quantidadeVendas={quantidadeVendas}>
+          <div>
+            <p>Trending</p>
+          </div>
+        </Background>
+        <ProdutosDetalhes curtidas={curtidas}>
+          <NomeProdutos>
+            <h1>{nameProduct}</h1>
+            <h2>{descriptionProducts}</h2>
+          </NomeProdutos>
+          <button onClick={() => setCurtidas(!curtidas)}>
+            <Hearth className="icon_curtida"/>
+          </button>
+        </ProdutosDetalhes>
+        <Avaliacao>
+          <Ratings defaultValue={defaultRatings}/>
+          <p>{ratings} Ratings</p>
+        </Avaliacao>
+        <PrecoProducts>
+          <h2>${precoComDesconto}</h2>
+          <h3>${procoTotal}</h3>
+          <p>{totalDesconsto}% OFF</p>
+        </PrecoProducts>
 
-      {buttonOn && 
-        <ButtonOutline 
-          variant="default" 
-          icon={<Bag className="icon_bag"/>} 
-          text='Add to bag'
-        />
-      }
+        {buttonOn && 
+          <ButtonOutline 
+            variant="default" 
+            icon={<Bag className="icon_bag"/>} 
+            text='Add to bag'
+          />
+        }
 
-    </Container>
+      </Container>
+    </Link>
   )
 }
