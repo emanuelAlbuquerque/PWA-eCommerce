@@ -68,7 +68,7 @@ export const corVariantes: corVariantesTypes = {
 
 export const Button = styled.button<ButtonColorProps>`
   width: 100%;
-  height: 45px;
+  height: 40px;
   padding: 1rem 0;
 
   border: none;

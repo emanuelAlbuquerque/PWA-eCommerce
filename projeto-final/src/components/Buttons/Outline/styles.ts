@@ -88,7 +88,7 @@ export const Button = styled.button<ButtonColorProps>`
   gap: 8px;
 
   .icon {
-    fill: ${props => props.color};
+    stroke: ${props => props.color};
   }
 
   border-radius: 8px;
@@ -99,7 +99,7 @@ export const Button = styled.button<ButtonColorProps>`
     color: ${props => props.hoverColor};
 
     .icon{
-      fill: ${props => props.hoverColor};
+      stroke: ${props => props.hoverColor};
     }
   }
 
@@ -109,7 +109,7 @@ export const Button = styled.button<ButtonColorProps>`
     color: ${props => props.focusColor};
 
     .icon{
-     fill: ${props => props.focusColor}
+     stroke: ${props => props.focusColor}
     }
   }
 `

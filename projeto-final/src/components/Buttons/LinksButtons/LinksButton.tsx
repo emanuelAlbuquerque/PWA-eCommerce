@@ -1,12 +1,13 @@
+import { Link, NavLink } from "react-router-dom";
 import { ButtonProps } from "../Types";
 import { Ancora, corVariantes } from "./styles";
 
-export const LinkButton = ({ text, icon, variant, onClick}: ButtonProps) => {
+export const LinkButton = ({ text, icon, variant, onClick, className }: ButtonProps) => {
 
   const { bgColor, bgBorder, color, mouseHover, focusMouse } = corVariantes[variant]
 
   return (
-    <Ancora href="www.google.com"
+    <Ancora
       bgColor={bgColor}
       bgBorder={bgBorder}
       color={color}
@@ -17,6 +18,7 @@ export const LinkButton = ({ text, icon, variant, onClick}: ButtonProps) => {
       focusBgBorder={focusMouse.focusBgBorder}
       focusColor={focusMouse.focusColor}
       onClick={onClick}
+      className={className}
     > 
       {icon}
       {text}
