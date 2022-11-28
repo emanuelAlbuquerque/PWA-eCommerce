@@ -5,9 +5,10 @@ import { Button } from "./style"
 
 export interface AccordianProps{
   children?: ReactNode
+  label?: string
 }
 
-export function Accordian({children}: AccordianProps){
+export function Accordian({children, label}: AccordianProps){
 
   const [expandOn, setExpandOn] = useState(false)
 
@@ -18,7 +19,7 @@ export function Accordian({children}: AccordianProps){
   return(
     <>
       <Button onClick={expand}>
-        <p>More about CORA’L</p>
+        <p>{label}</p>
         {expandOn ? <ChevronUp /> : <ChevronBottom />}
       </Button>
       {expandOn && children}
