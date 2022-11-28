@@ -1,39 +1,52 @@
-import {  useState  } from 'react'
+import React, {  ForwardedRef, useState  } from 'react'
 import { Container } from './style'
 import acept from '../../assets/img/acept.svg'
 
 export interface CheckBoxProps{
   name?: string
-  label?: string
   checked?: boolean
   hover?:  boolean 
   disabled?: boolean
+  setFiltroColor: React.Dispatch<React.SetStateAction<string[]>>
+  filtroColor: string[]
 }
 
-export function CheckBox({ label, name, checked, hover, ...props }: CheckBoxProps){
-  const defaultChecked = checked ? checked : false;
+export const CheckBox = React.forwardRef((props: CheckBoxProps, ref: ForwardedRef<HTMLInputElement>) => {
+  const defaultChecked = props.checked ? props.checked : false;
   const [isChecked, setChecked] = useState(defaultChecked)
-  const [value, setValue] = useState('')
+
+  console.log(ref)
+
+  const defaultColors = props.filtroColor
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    
+    if (isChecked){
+      const tiraCor = defaultColors.filter((cor) => e.target.value !== cor)
+      props.setFiltroColor(tiraCor)
+    }else{
+      defaultColors.push(e.target.value)
+      props.setFiltroColor(defaultColors)
+    }
+    
     setChecked(!isChecked)
-    setValue(e.currentTarget.value)
   }
   return(
-    <Container url={acept} hover={hover}>
+    <Container url={acept} hover={props.hover}>
       <input
         type="checkbox"
-        name={name}
-        id={name}
-        value={value}
+        name={props.name}
+        id={props.name}
+        value={props.name}
         checked={isChecked}
         onChange={handleChange}
+        ref={ref}
         {...props}
         />
-        <label htmlFor={name}>
-          {label}
-        </label>
+        <label htmlFor={props.name}>
+          {props.name}
+        </label> 
     </Container>
 
   )
-}
+})
