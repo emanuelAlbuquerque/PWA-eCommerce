@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import { Theme } from "../../styles/Theme";
 
-interface ContainerProps{
-  active: boolean
-}
-
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
   width: 100%;
   max-width: 80px;
   height: 30px;
