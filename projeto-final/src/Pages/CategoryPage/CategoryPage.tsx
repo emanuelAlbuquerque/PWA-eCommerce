@@ -28,6 +28,7 @@ export function CategoryPage(){
 
 //  ----------------------------Filtros------------------------------------
   const [filtroColor, setFiltroColor] = useState<string[]>([])
+  const [filtroSize, setFiltroSize] = useState<string[]>([])
 // ---------------------------------------------------------------------------
 
 // --------------------------------NAVEGAÇÂO----------------------------
@@ -36,8 +37,6 @@ export function CategoryPage(){
     navigate('/')
   }
 //-----------------------------------------------------------------------
-
-  const inputColor = useRef() as React.MutableRefObject<HTMLInputElement>
 
   const isActive = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const pai = e.currentTarget.parentElement?.children
@@ -93,7 +92,14 @@ export function CategoryPage(){
       <ContainerListaProdutos>
 
         <ContainerFiltro>
-          <FiltrosWeb text="Size" />
+          <FiltrosWeb text="Size">
+            <CheckBox
+              name="Mercado"
+              filtroSize={filtroSize}
+              setFiltroSize={setFiltroSize}
+              className="inputSize"
+            />
+          </FiltrosWeb>
           <FiltrosWeb text="Color">
             {FiltrosColor.map((filtro) => (
               <CheckBox 
@@ -101,7 +107,7 @@ export function CategoryPage(){
                 name={filtro.name} 
                 filtroColor={filtroColor} 
                 setFiltroColor={setFiltroColor}
-                ref={inputColor}
+                className="inputColor"
               />
             ))}
           </FiltrosWeb>
