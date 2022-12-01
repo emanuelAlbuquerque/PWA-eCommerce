@@ -1,4 +1,4 @@
-import React, {  ForwardedRef, useState  } from 'react'
+import React, {  useState  } from 'react'
 import { Container } from './style'
 import acept from '../../assets/img/acept.svg'
 
@@ -7,46 +7,79 @@ export interface CheckBoxProps{
   checked?: boolean
   hover?:  boolean 
   disabled?: boolean
-  setFiltroColor: React.Dispatch<React.SetStateAction<string[]>>
-  filtroColor: string[]
+  className?: string
+  setFiltroColor?: React.Dispatch<React.SetStateAction<string[]>>
+  filtroColor?: string[]
+  setFiltroSize?: React.Dispatch<React.SetStateAction<string[]>>
+  filtroSize?: string[]
 }
 
-export const CheckBox = React.forwardRef((props: CheckBoxProps, ref: ForwardedRef<HTMLInputElement>) => {
-  const defaultChecked = props.checked ? props.checked : false;
+export function CheckBox(
+  { 
+    filtroColor, 
+    setFiltroColor, 
+    setFiltroSize,
+    filtroSize,
+    checked, 
+    hover, 
+    name, 
+    className, 
+    ...props
+  }: CheckBoxProps){
+  const defaultChecked = checked ? checked : false;
   const [isChecked, setChecked] = useState(defaultChecked)
 
-  console.log(ref)
 
-  const defaultColors = props.filtroColor
+  const defaultColors = filtroColor
+  const defaultSize = filtroSize
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    
-    if (isChecked){
-      const tiraCor = defaultColors.filter((cor) => e.target.value !== cor)
-      props.setFiltroColor(tiraCor)
-    }else{
-      defaultColors.push(e.target.value)
-      props.setFiltroColor(defaultColors)
+    if(e.currentTarget.classList.contains('inputColor')){
+      if (isChecked){
+        if (defaultColors && setFiltroColor){
+          const tiraCor = defaultColors.filter((cor) => e.target.value !== cor)
+          setFiltroColor(tiraCor)
+        }
+      }else{
+        if (defaultColors && setFiltroColor) {
+          defaultColors.push(e.target.value)
+          setFiltroColor(defaultColors)
+        }
+      }
     }
+    if (e.currentTarget.classList.contains('inputSize')) {
+      if (isChecked) {
+        if (defaultSize && setFiltroSize) {
+          const tiraSize = defaultSize.filter((size) => e.target.value !== size)
+          setFiltroSize(tiraSize)
+        }
+      } else {
+        if (defaultSize && setFiltroSize) {
+          defaultSize.push(e.target.value)
+          setFiltroSize(defaultSize)
+        }
+      }
+    }
+    
     
     setChecked(!isChecked)
   }
   return(
-    <Container url={acept} hover={props.hover}>
+    <Container url={acept} hover={hover}>
       <input
         type="checkbox"
-        name={props.name}
-        id={props.name}
-        value={props.name}
+        name={name}
+        id={name}
+        value={name}
         checked={isChecked}
         onChange={handleChange}
-        ref={ref}
+        className={className}
         {...props}
-        />
-        <label htmlFor={props.name}>
-          {props.name}
-        </label> 
+      />
+        <label htmlFor={name}>
+          {name}
+        </label>
     </Container>
 
   )
-})
+}
