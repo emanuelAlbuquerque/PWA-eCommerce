@@ -6,9 +6,20 @@ import { Container } from "./style"
 export interface FiltrosWebProps{
   children?: ReactNode
   text: string
+  iconActive?: ReactNode
+  iconDisabe?: ReactNode
+
+  classNameText?: string
 }
 
-export function FiltrosWeb({children, text}: FiltrosWebProps){
+export function FiltrosWeb(
+  { 
+    children, 
+    text, 
+    iconActive = <SmallMinus />, 
+    iconDisabe = <Plus />, 
+    classNameText
+  }: FiltrosWebProps){
 
   const [expandOn, setExpandOn] = useState(false)
 
@@ -19,8 +30,8 @@ export function FiltrosWeb({children, text}: FiltrosWebProps){
   return(
     <>
       <Container onClick={expand}>
-        <p>{text}</p>
-        {expandOn ?  <SmallMinus /> : <Plus />}
+        <p className={classNameText}>{text}</p>
+        {expandOn ? iconActive  :  iconDisabe }
       </Container>
       {expandOn && children}
     </>
