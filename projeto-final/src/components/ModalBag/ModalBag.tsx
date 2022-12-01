@@ -1,24 +1,44 @@
 import { AppBar } from "../AppBar/AppBar";
-import { ContainerInfosProdutos, ContainerModalBag, InfosProdutos } from "./style";
-import bolsa from '../../assets/img/bolsa.png'
+import { ContainerInfosProdutos, ContainerModalBag, InfosProdutos, ContainerItens } from "./style";
 import { ArrowLeft } from "../../assets/Icons/General/ArrowLeft";
 import { DefaultCard } from "../CardVerticais/Default/DefaultCard";
 import { TextField } from "../TextField/TextField";
 import { ButtonPrimary } from "../Buttons/Primary/ButtonPrimary";
+import {useEffect, useState} from "react";
+import { NavLink, Link } from "react-router-dom";
 
 export interface ModalBagProps{
   modalBagOn: boolean
   setModalBagOn: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
+interface BagItensProps{
+  quantidade: number, 
+  nome: string, 
+  descricao: string, 
+  preco: number, 
+  id: string
+  img: string
+}
 
 export function ModalBag({modalBagOn, setModalBagOn}: ModalBagProps){
-
-
+  const getPublicacoesStorage = () => JSON.parse(localStorage.getItem('bag') as string) ?? [];
+  
+  const [itens, setItens] = useState<BagItensProps[]>(getPublicacoesStorage())
+  const [precoTotal, setPrecoTotal] = useState<number>(0)
   const handleOnClickBagOff = () => {
     setModalBagOn(false)
   } 
+  
+  useEffect(() => {
+    let total = precoTotal
+
+    itens.map((item) => {
+      total += item.preco * item.quantidade
+    })
+
+    setPrecoTotal(total)
+  }, [])
 
   return(
     <ContainerModalBag modalBagOn={modalBagOn}>
@@ -31,26 +51,25 @@ export function ModalBag({modalBagOn, setModalBagOn}: ModalBagProps){
           onClickIconeEsqueda={handleOnClickBagOff}
         />
 
-        <DefaultCard
-          nomeProduto="Prada"
-          descricaoProduto="Leather Coach Bag"
-          precoProduto="54.69"
-          img={bolsa}
-          className="card" 
-          quantidadeProduto={"1"}        />
-        <DefaultCard
-          nomeProduto="Prada"
-          descricaoProduto="Leather Coach Bag"
-          precoProduto="54.69"
-          quantidadeProduto="1"
-          img={bolsa}
-          className="card"
-        />
-
+        <ContainerItens>
+          {itens.map((item, key) => (
+            <DefaultCard
+              key={key}
+              nomeProduto={item.nome}
+              descricaoProduto={item.descricao}
+              precoProduto={item.preco}
+              img={item.img}
+              quantidadeProduto={item.quantidade}
+              className="card" 
+              setPrecoTotal={setPrecoTotal}
+              precoTotal={precoTotal}
+            />
+          ))}
+        </ContainerItens>
         <ContainerInfosProdutos>
           <InfosProdutos>
             <p>Subtotal:</p>
-            <p>$109.38</p>
+            <p>{precoTotal && `$${(precoTotal).toFixed(2)}`}</p>
           </InfosProdutos>
           <InfosProdutos>
             <p>Tax:</p>
@@ -67,10 +86,12 @@ export function ModalBag({modalBagOn, setModalBagOn}: ModalBagProps){
         </div>
 
         <div className="buttonModalBag">
-          <ButtonPrimary variant="default" text="Place Order" />
+          <Link to="/myCarty">
+            <ButtonPrimary variant="default" text="Place Order" />
+          </Link>
         </div>
 
-        <a href="" className="continue">Continue Shopping</a>
+        <NavLink to="/categoryPage" className="continue">Continue Shopping</NavLink>
       </div>
     </ContainerModalBag>
   )

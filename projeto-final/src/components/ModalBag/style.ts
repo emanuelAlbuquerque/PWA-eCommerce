@@ -78,3 +78,9 @@ export const InfosProdutos = styled.div`
     color: ${Theme.Colors.highEmphasis};
   }
 `
+
+export const ContainerItens = styled.div`
+  overflow-y: scroll; 
+
+  height: 270px;
+`
