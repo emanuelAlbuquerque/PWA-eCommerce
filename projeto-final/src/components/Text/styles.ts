@@ -6,7 +6,7 @@ interface TextTagProps{
   color:string
 }
 
-export const TextTag = styled.h2<TextTagProps>`
+export const TextTag = styled.h1<TextTagProps>`
   color: ${props => props.color};
   ${(props) => {
     switch (props.variant) {

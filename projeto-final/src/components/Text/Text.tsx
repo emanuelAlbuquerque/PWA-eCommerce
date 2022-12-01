@@ -9,7 +9,7 @@ export interface TextTypesProps{
   className?: string
 }
 
-export function TextTypes({ children, variant, color = Theme.Colors.highEmphasis, className}: TextTypesProps){
+export function TextTypes({ children, variant, color = Theme.Colors.highEmphasis, className }: TextTypesProps){
   return(
     <TextTag variant={variant} color={color} className={className}>
       {children}
