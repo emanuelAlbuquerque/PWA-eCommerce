@@ -87,7 +87,7 @@ export const Theme = {
       size: '14px'
     },
     LabelMedium: {
-      weight: '500',
+      weight: '400',
       size: '12px'
     },
     LabelSmall: {
@@ -105,6 +105,10 @@ export const Theme = {
     LinkMedium: {
       weight: '400',
       size: '10px'
+    },
+    LinkRegular: {
+      weight: '600',
+      size: '16px'
     },
     card: {
       weight: '600',
