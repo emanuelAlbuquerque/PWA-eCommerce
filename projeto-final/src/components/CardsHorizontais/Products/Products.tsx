@@ -11,9 +11,9 @@ export interface ProductsProps{
   buttonOn?: boolean
   descriptionProducts?: string
   nameProduct?: string
-  precoComDesconto?: string
-  procoTotal?:string
-  totalDesconsto?:string
+  precoComDesconto?: number
+  procoTotal?: number
+  totalDesconsto?: number
   ratings?: number | string
   defaultRatings: number
   className?: string
