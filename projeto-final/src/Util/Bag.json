@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "nomeProduto": "Prada",
+    "descricaoProduto": "Leather Coach Bag",
+    "precoProduto": 54.69,
+    "quantidadeProduto": 2,
+    "img": "bolsa"
+  },
+  {
+    "id": 2,
+    "nomeProduto": "Sapato",
+    "descricaoProduto": "Leather Coach Bag",
+    "precoProduto": 10.00,
+    "quantidadeProduto": 5,
+    "img": "bolsa"
+  }
+]
