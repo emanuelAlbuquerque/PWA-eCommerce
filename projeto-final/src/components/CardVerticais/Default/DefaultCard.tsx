@@ -2,15 +2,24 @@ import { ButtonOutline } from "../../Buttons/Outline/ButtonOutline";
 import { Container } from "./style";
 import { CrossSmall } from "../../../assets/Icons/General/CrossSmall";
 import { Stepper } from "../../Stepper/Stepper";
+import { SetStateAction, useEffect, useState } from "react";
 
 export interface DefaultCardProps{
-  img?: string
+  img: string
   nomeProduto: string
   descricaoProduto: string
-  precoProduto: string
-  quantidadeProduto: string
+  precoProduto: number
+  quantidadeProduto: number
   onClick?: () => void,
   className?: string
+
+  setPrecoTotal?: React.Dispatch<SetStateAction<number>>
+  precoTotal?: number
+
+  showStepper?: boolean
+  showAmount?: boolean
+  showRemoveProduto?: boolean
+  showQtd?: boolean
 }
 
 export function DefaultCard(
@@ -21,26 +30,59 @@ export function DefaultCard(
     quantidadeProduto,
     img,
     onClick,
-    className
+    className,
+    setPrecoTotal,  
+    precoTotal,
+    showAmount = true, showQtd = true, showRemoveProduto = true, showStepper = true
   }: DefaultCardProps)
 {
+
+  const [count, setCount] = useState(quantidadeProduto)
+  const [precoTotalProduto, setPrecoTotalProduto] = useState(precoProduto * count)
+
+  const aumentaPreco = () => {
+    setPrecoTotalProduto(precoProduto + precoTotalProduto)
+    if (setPrecoTotal && precoTotal){
+      setPrecoTotal(precoTotal + precoProduto)
+    }
+  }
+
+  const diminuiPreco = () => {
+    setPrecoTotalProduto(precoTotalProduto - precoProduto)
+    if (setPrecoTotal && precoTotal) {
+      setPrecoTotal(precoTotal - precoProduto)
+    }
+  }
+  
   return(
     <Container className={className}>
       <img src={img} alt="" />
       <div>
         <div className="name_products">
           <h2>{nomeProduto}</h2>
-          <button onClick={onClick}>
-            <CrossSmall />
-          </button>
+          {showRemoveProduto &&
+            <button onClick={onClick}>
+              <CrossSmall />
+            </button>
+          }
         </div>
         <h3>{descricaoProduto}</h3>
-        <div>
-          <p className="preco"> ${precoProduto}</p>
-          <p className="quantidade">Qty - {quantidadeProduto}</p>
+        <div className="qtdPreco">
+          {showAmount && 
+            <p className="preco"> ${(precoTotalProduto).toFixed(2)}</p>
+          }
+          {showQtd && 
+            <p className="quantidade">Qty - {count}</p>
+          }
         </div>
-        <Stepper className="contador"/>
-        <ButtonOutline variant="default" text="Add to Bag" className="button_add"/>
+        {showStepper && 
+          <Stepper className="contador" 
+            count={count} 
+            setCount={setCount} 
+            aumentaPreco={aumentaPreco} 
+            diminuiPreco={diminuiPreco}
+          />
+        }
       </div>
     </Container>
   )

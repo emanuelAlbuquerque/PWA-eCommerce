@@ -13,11 +13,11 @@ export const Default: Story<DefaultCardProps> = () => (
   <>
     <GlobalStyle />
     <DefaultCard
-      nomeProduto="Grande"
-      descricaoProduto="Blossom Pouch"
-      precoProduto="39.49"
-      quantidadeProduto='1'
       img={bolsa}
+      descricaoProduto='Leather Coach Bag'
+      nomeProduto='PRADA'
+      quantidadeProduto={1}
+      precoProduto={10.00}
     />
   </>
 )
