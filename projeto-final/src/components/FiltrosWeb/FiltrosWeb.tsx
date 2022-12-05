@@ -9,7 +9,12 @@ export interface FiltrosWebProps{
   iconActive?: ReactNode
   iconDisabe?: ReactNode
 
+  active?: boolean
+
   classNameText?: string
+  className?: string
+
+  onClick?: () => void
 }
 
 export function FiltrosWeb(
@@ -18,18 +23,29 @@ export function FiltrosWeb(
     text, 
     iconActive = <SmallMinus />, 
     iconDisabe = <Plus />, 
-    classNameText
+    classNameText,
+    className,
+    onClick,
+    active
   }: FiltrosWebProps){
 
-  const [expandOn, setExpandOn] = useState(false)
+  const defaultActive = active ? active : false
+  const [expandOn, setExpandOn] = useState(defaultActive)
 
   const expand = () => {
-    setExpandOn(!expandOn)
+    if(expandOn === false){
+      setExpandOn(true)
+    }else{
+      setExpandOn(false)
+      if(onClick){
+        onClick()
+      }
+    }
   }
 
   return(
     <>
-      <Container onClick={expand}>
+      <Container onClick={expand} className={className}>
         <p className={classNameText}>{text}</p>
         {expandOn ? iconActive  :  iconDisabe }
       </Container>
