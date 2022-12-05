@@ -14,9 +14,9 @@ export const Default:Story<CardProps> = () => (
     <Card
       descriptionProducts='Leather Coach Bag'
       nameProduct='PRADA'
-      precoComDesconto='$54.69'
-      procoTotal='$69.99'
-      totalDesconsto='20% OFF'
+      precoComDesconto={54.69}
+      procoTotal={69.99}
+      totalDesconsto={20}
       img={exBag}
     />
   </>

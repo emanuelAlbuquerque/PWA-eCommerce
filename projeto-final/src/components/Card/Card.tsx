@@ -5,9 +5,9 @@ export interface CardProps{
   img: string
   nameProduct: string
   descriptionProducts: string
-  procoTotal: string
-  precoComDesconto: string
-  totalDesconsto: string
+  procoTotal?: number
+  precoComDesconto: number
+  totalDesconsto?: number
 }
 
 export function Card(
@@ -48,9 +48,9 @@ export function Card(
             </select>
           </QuantidadeProdutos>
           <PrecoProdutos>
-            <h2>{precoComDesconto}</h2>
-            <h3>{procoTotal}</h3>
-            <p>{totalDesconsto} OF</p>
+            <h2>${precoComDesconto}</h2>
+            {procoTotal && <h3>${procoTotal}</h3>}
+            {totalDesconsto && <p>{totalDesconsto}% OFF</p>}
           </PrecoProdutos>
         </DetalhesProdutos>
       </ContainerProduct>

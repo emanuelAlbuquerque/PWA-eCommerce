@@ -3,7 +3,9 @@ import { Theme } from "../../styles/Theme";
 
 export const Container = styled.div`
   width: 100%;
-  background-color: ${Theme.Colors.tranparent};
+  background-color: ${Theme.Colors.bright};
+
+  border-radius: 12px;
 `
 
 export const ContainerProduct = styled.div`
