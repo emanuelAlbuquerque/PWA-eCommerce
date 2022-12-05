@@ -1,17 +1,22 @@
-import React, {  useState  } from 'react'
+import React, {  useEffect, useState  } from 'react'
 import { Container } from './style'
 import acept from '../../assets/img/acept.svg'
 
 export interface CheckBoxProps{
   name?: string
+  label?:string
   checked?: boolean
   hover?:  boolean 
   disabled?: boolean
   className?: string
+  
   setFiltroColor?: React.Dispatch<React.SetStateAction<string[]>>
   filtroColor?: string[]
   setFiltroSize?: React.Dispatch<React.SetStateAction<string[]>>
   filtroSize?: string[]
+
+  isChecked: boolean
+  setChecked: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function CheckBox(
@@ -24,10 +29,18 @@ export function CheckBox(
     hover, 
     name, 
     className, 
+    isChecked,
+    setChecked,
+    label,
     ...props
   }: CheckBoxProps){
-  const defaultChecked = checked ? checked : false;
-  const [isChecked, setChecked] = useState(defaultChecked)
+    
+    
+    useEffect(() => {
+      const defaultChecked = checked ? checked : false;
+
+      setChecked(defaultChecked)
+    }, [checked])
 
 
   const defaultColors = filtroColor
@@ -77,7 +90,7 @@ export function CheckBox(
         {...props}
       />
         <label htmlFor={name}>
-          {name}
+          {label}
         </label>
     </Container>
 
