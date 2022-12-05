@@ -26,6 +26,9 @@ export function CategoryPage(){
   const [modalBagOn, setModalBagOn] = useState(false)
   const [modelPage, setModelPage] = useState(true)
 
+  const [selectInputRadio, setSelectInputRadio] = useState('')
+  const [isChecked, setChecked] = useState(false)
+
 //  ----------------------------Filtros------------------------------------
   const [filtroColor, setFiltroColor] = useState<string[]>([])
   const [filtroSize, setFiltroSize] = useState<string[]>([])
@@ -98,6 +101,8 @@ export function CategoryPage(){
               filtroSize={filtroSize}
               setFiltroSize={setFiltroSize}
               className="inputSize"
+              isChecked={isChecked}
+              setChecked={setChecked}
             />
           </FiltrosWeb>
           <FiltrosWeb text="Color">
@@ -108,6 +113,8 @@ export function CategoryPage(){
                 filtroColor={filtroColor} 
                 setFiltroColor={setFiltroColor}
                 className="inputColor"
+                isChecked={isChecked}
+                setChecked={setChecked}
               />
             ))}
           </FiltrosWeb>
@@ -184,11 +191,11 @@ export function CategoryPage(){
                 <Cross />
               </button>
             </div>
-            <RadioButton name="sort" value="latest" label="Latest Products" />
-            <RadioButton name="sort" value="lowToHigh" label="Price- Low to High" />
-            <RadioButton name="sort" value="highToLow" label="Price- High to Low" />
-            <RadioButton name="sort" value="popularity" label="Popularity" />
-            <RadioButton name="sort" value="customerRatings" label="Customer Ratings" />
+            <RadioButton name="sort" value="latest" label="Latest Products" selectRadioBtn={selectInputRadio} setSelectRadioBtn={setSelectInputRadio} onClick={() => {}} />
+            <RadioButton name="sort" value="lowToHigh" label="Price- Low to High" selectRadioBtn={selectInputRadio} setSelectRadioBtn={setSelectInputRadio} onClick={() => { }} />
+            <RadioButton name="sort" value="highToLow" label="Price- High to Low" selectRadioBtn={selectInputRadio} setSelectRadioBtn={setSelectInputRadio} onClick={() => { }} />
+            <RadioButton name="sort" value="popularity" label="Popularity" selectRadioBtn={selectInputRadio} setSelectRadioBtn={setSelectInputRadio} onClick={() => { }} />
+            <RadioButton name="sort" value="customerRatings" label="Customer Ratings" selectRadioBtn={selectInputRadio} setSelectRadioBtn={setSelectInputRadio} onClick={() => { }} />
           </div>
         </ContainerModalSort>
 
