@@ -17,6 +17,7 @@ export const Theme = {
     highEmphasis: '#171520',
     lowEmphasis: '#626262',
     lightGray:'#D8D8D8',
+    textGray: '#A7A7A7',
     Faded: '#7E7E7E',
     orangeLight: '#FFDD9D',
     rosa: '#A53F64'
@@ -29,6 +30,10 @@ export const Theme = {
     DisplayLarge: {
       weight: '700',
       size: '40px'
+    },
+    DisplaySmallLarge: {
+      weight: '700',
+      size: '28px'
     },
     DisplayRegular: {
       weight: '500',
