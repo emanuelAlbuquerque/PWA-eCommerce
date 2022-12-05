@@ -19,7 +19,7 @@ export const DisplayLarge: Story<TextTypesProps> = () => (
   <>
     <GlobalStyle />
     <TextTypes variant="DisplayLarge">
-       Olá mundo
+      Olá mundo
     </TextTypes >
   </>
 )
