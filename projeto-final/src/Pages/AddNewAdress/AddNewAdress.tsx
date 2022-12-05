@@ -119,6 +119,7 @@ export function AddNewAddress(){
           variant="default"
           text="Save Address"
           className="buttonSave"
+          onClick={() => navigate('/payments')}
         />
       </Main>
     </>

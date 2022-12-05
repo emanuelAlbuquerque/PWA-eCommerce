@@ -38,10 +38,14 @@ import { Handbags } from "../../assets/Icons/Product/Handbags";
 import { BarraNavegacao } from "../CategoryPage/style";
 import { useState } from "react";
 import { ModalBag } from "../../components/ModalBag/ModalBag";
+import { SkinCare } from "../../assets/Icons/Product/SkinCare";
+import { Jewellery } from "../../assets/Icons/Product/Jewellery";
+import { useNavigate } from "react-router-dom";
 
 export function Home(){
 
   const [modalBagOn, setModalBagOn] = useState(false)
+  const navigate = useNavigate()
 
   return(
     <>
@@ -76,15 +80,14 @@ export function Home(){
           Top Categories
         </h2>
         <div>
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
-          <Category icon={<Handbags />} text="Skincare" />
+          <Category icon={<SkinCare />} text="Skincare" />
+          <Category icon={<Jewellery />} text="Jewellery" />
+          <Category icon={<Handbags />} text="Handbags" onClick={() => navigate('/categoryPage')}/>
+          <Category icon={<Handbags />} text="Handbags" onClick={() => navigate('/categoryPage')}/>
+          <Category icon={<Handbags />} text="Handbags" onClick={() => navigate('/categoryPage')}/>
+          <Category icon={<Handbags />} text="Handbags" onClick={() => navigate('/categoryPage')}/>
+          <Category icon={<Handbags />} text="Handbags" onClick={() => navigate('/categoryPage')}/>
+          <Category icon={<Handbags />} text="Handbags" onClick={() => navigate('/categoryPage')}/>
         </div>
       </ContainerCategory>
 
@@ -182,16 +185,16 @@ export function Home(){
       </AssesblyWideContainer>
 
       <FooterWeb />
-      <Accordian>
+      <Accordian label="More about CORA’L">
         <FooterMobile />
       </Accordian>
 
-        <Espacamento >
-          <br />
-          <br />
-          <br />
-          <br />
-        </Espacamento>
+      <Espacamento >
+        <br />
+        <br />
+        <br />
+        <br />
+      </Espacamento>
           
       <ModalBag modalBagOn={modalBagOn} setModalBagOn={setModalBagOn} />
       <BottomNavigation />

@@ -25,6 +25,7 @@ import { ButtonDuo } from "../../components/AssemblyButtons/Duo/ButtonDuo";
 import { Espacamento } from "../Home/style"
 import OpcoesProduto from '../../Util/OpcoesProducts.json'
 import { useState } from "react";
+import { ModalBag } from "../../components/ModalBag/ModalBag";
 
 
 interface ProdutoPros{
@@ -42,6 +43,7 @@ interface ProdutoPros{
 
 export function ProductPage() {
   const [count, setCount] = useState(1)
+  const [modalBagOn, setModalBagOn] = useState(false)
 
   const { idProduto } = useParams() //Pega o id do produto
 
@@ -77,12 +79,13 @@ export function ProductPage() {
 
   return (
     <>
-      <Header />
+      <Header setModalBagOn={setModalBagOn} />
       <BarraNavegacao>
         <AppBar
           iconeEsquerda={<ChevronLeft />}
           variant="Search"
-          onClickIconeEsqueda={AppBarHandleClick}
+          onClickIconeEsqueda={AppBarHandleClick} 
+          text={""}        
         />
       </BarraNavegacao>
   
@@ -212,11 +215,18 @@ export function ProductPage() {
           </Espacamento>
 
           <ContainerButtonMobile>
-            <ButtonDuo iconButtonSmall={<Hearth />} iconButtonLarge={<Bag />} textButtonLarge="Add to bag" />
+            <ButtonDuo 
+              iconButtonSmall={<Hearth />} 
+              iconButtonLarge={<Bag />} 
+              textButtonLarge="Add to bag" 
+              onClickButtonLarge={() => {
+                handleClickSaveLocalStorage(count, item.nome, item.descricao, item.preco, item.id, item.img)
+              }}/>
           </ContainerButtonMobile>
         </main>
       ))}
       <FooterWeb />
+      <ModalBag modalBagOn={modalBagOn} setModalBagOn={setModalBagOn} />
     </>
   )
 }

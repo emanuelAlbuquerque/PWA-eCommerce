@@ -20,6 +20,7 @@ import logoGooglePlay from '../../assets/img/logoGooglePlay.png';
 import logoPhonePe from '../../assets/img/logoPhonePe.png';
 import logoPaytm from '../../assets/img/logoPaytm.png';
 import { ButtonPrimary } from "../../components/Buttons/Primary/ButtonPrimary";
+import { ModalBag } from "../../components/ModalBag/ModalBag";
 
 export function CheckoutPage(){
 
@@ -57,7 +58,7 @@ export function CheckoutPage(){
   const [isCheckedPhonePe, setIsCheckedPhonePe] = useState(false)
   const [isCheckedPaytm, setIsCheckedPaytm] = useState(false)
 
-
+  const [modalBagOn, setModalBagOn] = useState(false)
 
   const isActive = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     if (e.currentTarget.checked && e.currentTarget.value === 'UPI'){
@@ -106,7 +107,7 @@ export function CheckoutPage(){
 
   return(
     <>
-      <Header />
+      <Header setModalBagOn={setModalBagOn} />
 
       <PageTitle>
         Checkout
@@ -384,6 +385,8 @@ export function CheckoutPage(){
       </Main>
 
       <FooterWeb />
+
+      <ModalBag modalBagOn={modalBagOn} setModalBagOn={setModalBagOn} />
     </>
   )
 }

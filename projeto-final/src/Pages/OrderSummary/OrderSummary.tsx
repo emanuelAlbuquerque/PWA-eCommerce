@@ -88,7 +88,7 @@ export function OrderSummaryPage(){
             discount={0}
             subTotal={0}
           />
-          <ButtonPrimary variant="default" text="Proceed to Payments" className="buttonProgress"/>
+          <ButtonPrimary variant="default" text="Proceed to Payments" className="buttonProgress" onClick={() => navigate('/addNewAddress')}/>
         </div>
 
         {modalAdressOn && 

@@ -11,15 +11,18 @@ import { TextField } from "../../components/TextField/TextField";
 import { FooterWeb } from "../../components/FooterWeb/FooterWeb";
 import { Order } from "../../components/Order/Order";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { ModalBag } from "../../components/ModalBag/ModalBag";
 
 
 export function MyCart() {
 
+  const [modalBagOn, setModalBagOn] = useState(false)
   const navigate = useNavigate()
 
   return ( 
       <>
-        <Header />
+        <Header setModalBagOn={setModalBagOn} />
 
         <PageTitle>
           My Cart
@@ -96,6 +99,7 @@ export function MyCart() {
         </MainContainer>
 
         <FooterWeb />
+        <ModalBag modalBagOn={modalBagOn} setModalBagOn={setModalBagOn} />
       </>
     );
 }
