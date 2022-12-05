@@ -23,6 +23,9 @@ const TampleteDefault = () => {
           mensagem="Assistive Text"
           value={value}
           setValue={setValue}
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
 
         <br />
@@ -33,6 +36,9 @@ const TampleteDefault = () => {
           variant="default"
           disable
           mensagem="Assistive Text"
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
 
         <br />
@@ -45,6 +51,9 @@ const TampleteDefault = () => {
           mensagem="Assistive Text"
           value={value}
           setValue={setValue}
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
       </div>
     </>
@@ -66,6 +75,9 @@ const TampleteAction = () => {
           mensagem="Assistive Text"
           value={value}
           setValue={setValue}
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
 
         <br />
@@ -76,6 +88,9 @@ const TampleteAction = () => {
           variant="action"
           disable
           mensagem="Assistive Text"
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
 
         <br />
@@ -88,6 +103,9 @@ const TampleteAction = () => {
           mensagem="Assistive Text"
           value={value}
           setValue={setValue}
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
       </div>
     </>
@@ -115,6 +133,9 @@ const TampleteIcons = () => {
           value={value}
           setValue={setValue}
           mensagem="Assistive Text"
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
 
         <br />
@@ -131,6 +152,9 @@ const TampleteIcons = () => {
           iconLeft={<Placeholder />}
           disable
           mensagem="Assistive Text"
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
 
         <br />
@@ -149,6 +173,9 @@ const TampleteIcons = () => {
           mensagem="Error Mensage"
           value={value}
           setValue={setValue}
+          name="teste"
+          placeholder="StoryBook"
+          type="text"
         />
       </div>
     </>

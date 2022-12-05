@@ -5,6 +5,7 @@ interface ContainerProps{
   text: string 
   disable: boolean
   error: boolean
+  variant: "action" | "icons" | "default" | "active"
 }
 
 export const Conteiner = styled.div<ContainerProps>`
@@ -30,31 +31,37 @@ export const Conteiner = styled.div<ContainerProps>`
 
     ${({ error }) => error && `border: 1px solid ${Theme.Colors.error};` }
 
-    ${({ error, text }) => {
-      if (text.length > 0) {
-        return `
-          border: 1px solid ${error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
-        `
+
+
+    ${({ error, text, variant }) => {
+      if(variant !== 'active'){
+        if (text.length > 0) {
+          return `
+            border: 1px solid ${error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
+          `
+        }
       }
     }}
     
-    &:focus-within{
-      border: 1px solid ${({ error }) => error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
+
+    ${({ variant, error }) => variant !== 'active' && `
+      &:focus-within{
+        border: 1px solid ${error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
+      }
+
+      &:focus-within .input label{
+        color: ${error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
+        top: -7px;
+          
+        font-size: ${Theme.Typography.LabelMedium.size};
+        font-weight: ${Theme.Typography.LabelMedium.weight};
+      }
+
+      &:focus-within .input input{
+        margin-top: 1rem;
+      }`
     }
 
-    &:focus-within .input label{
-      color: ${({ error }) => error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
-      top: -7px;
-        
-      font-size: ${Theme.Typography.LabelMedium.size};
-      font-weight: ${Theme.Typography.LabelMedium.weight};
-    }
-
-    &:focus-within .input input{
-      margin-top: 1rem;
-    }
-    
-    
 
     .iconLeft{
       margin-right: 1rem
@@ -83,11 +90,13 @@ export const Conteiner = styled.div<ContainerProps>`
         font-weight: ${Theme.Typography.BodyMedium.weight};
         transition: all .2s;
 
-        ${({text}) => {
-          if(text.length > 0){
-            return`
-              margin-top: 1rem;
-            `
+        ${({text, variant}) => {
+          if(variant !== 'active'){
+            if(text.length > 0){
+              return`
+                margin-top: 1rem;
+              `
+            }
           }
         }}
       }
@@ -96,22 +105,24 @@ export const Conteiner = styled.div<ContainerProps>`
         position: absolute;
         pointer-events: none;
 
-        ${({text, error}) => {
-          if(text.length > 0){
-            return `
-            color: ${error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
-            font-size: ${Theme.Typography.LabelMedium.size};
-            font-weight: ${Theme.Typography.LabelMedium.weight};
-            top: -7px;
-            `
-          }else{
-            return `
-              top: 0;
-              left: 0;
-              color: ${Theme.Colors.lowEmphasis};
-              font-size: ${Theme.Typography.BodyMedium.size};
-              font-weight: ${Theme.Typography.BodyMedium.weight};
-            `
+        ${({text, error, variant}) => {
+          if(variant !== 'active'){
+            if(text.length > 0){
+              return `
+              color: ${error ? `${Theme.Colors.error}` : `${Theme.Colors.primary}`};
+              font-size: ${Theme.Typography.LabelMedium.size};
+              font-weight: ${Theme.Typography.LabelMedium.weight};
+              top: -7px;
+              `
+            }else{
+              return `
+                top: 0;
+                left: 0;
+                color: ${Theme.Colors.lowEmphasis};
+                font-size: ${Theme.Typography.BodyMedium.size};
+                font-weight: ${Theme.Typography.BodyMedium.weight};
+              `
+            }
           }
         }}
 

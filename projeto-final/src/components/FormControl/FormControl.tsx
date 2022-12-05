@@ -13,11 +13,18 @@ export interface FormControlProps{
   disable?: boolean
   error?: boolean
 
-  variant: "action" | "icons" | "default"
+  variant: "action" | "icons" | "default" | "active"
   mensagem?: string
 
   value?: string
   setValue?: React.Dispatch<SetStateAction<string>>
+
+  label?: string
+  type: 'text'
+  name: string
+  placeholder: string
+
+  className?: string
 }
 
 
@@ -34,11 +41,16 @@ export function FormControl(
     variant,
     mensagem,
     value = '',
-    setValue
+    setValue,
+    label,
+    type,
+    name,
+    placeholder,
+    className
   }: FormControlProps){
 
   return(
-    <Conteiner text={value} disable={disable} error={error}>
+    <Conteiner text={value} disable={disable} error={error} variant={variant} className={className}>
       <div className="containerInput">
         {(showIconLeft && variant === 'icons') &&
           <div className="iconLeft">
@@ -47,13 +59,14 @@ export function FormControl(
         }
         <div className="input">
           <input 
-            type="text" 
-            placeholder="" 
+            type={type} 
+            placeholder={variant === 'active' ? placeholder : ''}
+            name={name}
             value={value} 
             onChange={(e) => {setValue && setValue(e.target.value)} }
             disabled={disable} 
           />
-          <label htmlFor="">Name: </label>
+          {variant !== "active" && <label htmlFor={name}>{label}</label>}
         </div>
 
         {((showIcon1 || showIcon2) && variant === 'icons') &&
