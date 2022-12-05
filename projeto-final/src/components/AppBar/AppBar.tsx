@@ -2,10 +2,10 @@ import { ReactNode } from "react"
 import { Container } from "./style"
 
 export interface AppBarProps{
-  variant?: 'PageTitle' | 'Search'
-  text?: string
+  variant: 'PageTitle' | 'Search'
+  text: string
   className?:string
-  iconeEsquerda?: ReactNode
+  iconeEsquerda: ReactNode
   onClickIconeEsqueda?: () => void
 
 
