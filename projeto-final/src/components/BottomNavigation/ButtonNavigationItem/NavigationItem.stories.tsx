@@ -2,7 +2,6 @@ import { NavigationItem, NavigationItemProps } from "./NavigationItem";
 import { Meta, Story } from "@storybook/react";
 import { GlobalStyle } from "../../../styles/Global";
 import { Placeholder } from "../../../assets/Icons/General/Placeholder";
-import { buttonActive } from "./NavigationItem";
 import { Bag } from "../../../assets/Icons/Navigation/Bag";
 
 export default {
