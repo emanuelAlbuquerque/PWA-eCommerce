@@ -13,7 +13,7 @@ export function Plus(){
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="icon"
+        className="iconStroke"
       />
     </svg>
   )
