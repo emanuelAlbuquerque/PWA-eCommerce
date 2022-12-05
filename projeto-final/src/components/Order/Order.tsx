@@ -5,17 +5,19 @@ import { OrderSumaryContainer } from "./style";
 
 
 export interface OrderProps{
-  title: string
+  title?: string
   subTotal: number
   discount: number
   deliveryFee: number
   onClickPlaceOrder?: () => void
 
   className?: string
+
+  variant: 'detail' | 'default' | 'mobile'
 }
 
 
-export function Order({deliveryFee, discount, subTotal, title, onClickPlaceOrder, className}: OrderProps){
+export function Order({ deliveryFee, discount, subTotal, title, onClickPlaceOrder, className, variant }: OrderProps){
 
   const navigate = useNavigate()
 
@@ -27,10 +29,12 @@ export function Order({deliveryFee, discount, subTotal, title, onClickPlaceOrder
 
 
   return(
-    <OrderSumaryContainer className={className}>
-      <h2>
-        {title}
-      </h2>
+    <OrderSumaryContainer className={className} variant={variant}>
+      {title && 
+        <h2>
+          {title}
+        </h2>
+      }
       <div className="ContainerInfosPrecos">
         <div className="preco">
           <h3>Sub Total</h3>
@@ -49,10 +53,14 @@ export function Order({deliveryFee, discount, subTotal, title, onClickPlaceOrder
           <p>${(subTotal - discount - deliveryFee).toFixed(2)}</p>
         </div>
       </div>
-      <div className="Buttons">
-        <ButtonPrimary variant="default" text="Place Order" onClick={handleOnClickPlaceOrder}/>
-        <ButtonOutline variant="default" text="Continue Shopping" onClick={() => navigate('/categoryPage')}/>
-      </div>
+
+      {variant === 'default' && 
+        <div className="Buttons">
+          <ButtonPrimary variant="default" text="Place Order" onClick={handleOnClickPlaceOrder}/>
+          <ButtonOutline variant="default" text="Continue Shopping" onClick={() => navigate('/categoryPage')}/>
+        </div>
+      }
+
     </OrderSumaryContainer>
   )
 }

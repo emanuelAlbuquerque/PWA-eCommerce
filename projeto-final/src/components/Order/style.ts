@@ -1,16 +1,41 @@
 import styled from "styled-components";
 import { Theme } from "../../styles/Theme";
 
-export const OrderSumaryContainer = styled.div`
+interface OrderSumaryContainerProps{
+  variant: 'detail' | 'default' | 'mobile'
+}
+
+
+export const OrderSumaryContainer = styled.div<OrderSumaryContainerProps>`
     width: 100%;
-    max-width: 415px;
+    ${({variant}) => variant !== 'mobile' && `max-width: 415px;`}
 
     h2{
       color: ${Theme.Colors.highEmphasis};
-      font-size: ${Theme.Typography.DisplaySmall.size};
-      font-weight: ${Theme.Typography.DisplaySmall.weight};
-      margin-bottom: 2rem;
-      border-bottom: 1px solid ${Theme.Colors.lightText};
+
+      font-size: ${({ variant }) => variant !== 'mobile' 
+        ? `${Theme.Typography.DisplaySmall.size}` 
+        : `${Theme.Typography.TitleRegular.size}`
+      };
+
+      font-weight: ${({ variant }) => variant !== 'mobile'
+        ? `${Theme.Typography.DisplaySmall.weight}`
+        : `${Theme.Typography.TitleRegular.weight}`
+      };
+
+      ${({variant}) => {
+        if(variant !== 'mobile'){
+          return`
+            margin-bottom: 2rem;
+            border-bottom: 1px solid ${Theme.Colors.lightText};
+          `
+        }else{
+          return`
+            margin-bottom: .5rem;
+            border-bottom: none;
+          `
+        }
+      }}
       padding: .5rem 0;
     }
 
@@ -33,8 +58,14 @@ export const OrderSumaryContainer = styled.div`
       .preco{
         h3, p{
           color: ${Theme.Colors.lowEmphasis};
-          font-size: ${Theme.Typography.BodyMedium.size};
-          font-weight: ${Theme.Typography.BodyMedium.weight};
+          font-size: ${({ variant }) => variant !== 'mobile'
+            ? `${Theme.Typography.BodyMedium.size}`
+            : `${Theme.Typography.TitleSmall.size}`
+          };
+          font-weight: ${({ variant }) => variant !== 'mobile'
+            ? `${Theme.Typography.BodyMedium.weight}`
+            : `${Theme.Typography.TitleSmall.weight}`
+          };
         }
         h3{
           color: ${Theme.Colors.lowEmphasis};
@@ -47,8 +78,14 @@ export const OrderSumaryContainer = styled.div`
       .precoTotal{
         h3, p{
           color: ${Theme.Colors.highEmphasis};
-          font-size: ${Theme.Typography.LinkRegular.size};
-          font-weight: ${Theme.Typography.LinkRegular.weight};
+          font-weight: ${({ variant }) => variant !== 'mobile'
+            ? `${Theme.Typography.LinkRegular.weight}`
+            : `${Theme.Typography.TitleRegular.weight}`
+          };
+          font-size: ${({ variant }) => variant !== 'mobile'
+            ? `${Theme.Typography.LinkRegular.size}`
+            : `${Theme.Typography.TitleRegular.size}`
+          };
         }
       }
     }
