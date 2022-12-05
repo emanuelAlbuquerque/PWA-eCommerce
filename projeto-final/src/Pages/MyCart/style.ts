@@ -8,6 +8,7 @@ export const MainContainer = styled.main`
 
 export const PageTitle = styled.h1`
   padding: 1rem;
+  margin: 1rem 0;
 
   font-size: ${Theme.Typography.DisplayMedium.size};
   font-weight: ${Theme.Typography.DisplayMedium.weight};

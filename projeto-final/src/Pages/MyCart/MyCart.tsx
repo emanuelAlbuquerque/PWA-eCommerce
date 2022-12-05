@@ -10,9 +10,13 @@ import { ChevronBottom } from "../../assets/Icons/General/ChevronBottom";
 import { TextField } from "../../components/TextField/TextField";
 import { FooterWeb } from "../../components/FooterWeb/FooterWeb";
 import { Order } from "../../components/Order/Order";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export function MyCart() {
+
+  const navigate = useNavigate()
+
   return ( 
       <>
         <Header />
@@ -65,13 +69,15 @@ export function MyCart() {
             </ContainerTable>
 
             <OrderSumary>
-              <Order 
-                className="OrderItem" 
-                title={"Order Summary"} 
-                subTotal={69.90} 
-                discount={1} 
-                deliveryFee={0} 
-              />
+                <Order 
+                  variant="default"
+                  className="OrderItem" 
+                  title={"Order Summary"} 
+                  subTotal={69.90} 
+                  discount={1} 
+                  deliveryFee={0} 
+                  onClickPlaceOrder={() => navigate('/checkoutPage')}
+                />
             </OrderSumary>
           </ContainerInfosProduto>
 
@@ -91,5 +97,5 @@ export function MyCart() {
 
         <FooterWeb />
       </>
-   );
+    );
 }
