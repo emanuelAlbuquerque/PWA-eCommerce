@@ -47,14 +47,53 @@ Entrega: 16/12 -  commits aceitos até até as 12h
 </div>
 
 
-## 🧑‍💻 Requisitos Obrigatórios - Fase 1
+## 🧑‍💻 Requisitos Obrigatórios
+
+### Fase 1
 
 - Desenvolvimento: React.js com TypeScript.
 - Documentação de componentes: Storybook.
 - Todas as funcionalidades respondendo de maneira correta.
 - Apresentação do projeto no dia determinado. A não apresentação acarretará nota 0 da fase.
 
-## 👀 Critérios de avaliação – Fase 01
+### Fase 2
+
+#### API   
+- Desenvolvimento: React.js com TypeScript.
+- Utilização de MongoDB para persistência de dados
+- Dados sensíveis criptografados
+- Validações - retornando mensagens para o front
+- Paginação
+- Dados a serem armazenados:
+
+1. Usuário: 
+- Endereços
+- Dados de pagamento
+- Favoritos
+- Carrinho
+- Avaliações
+
+2. Pedidos: 
+- Produtos
+- Categorias
+- Cupom
+
+#### Front
+
+- 2ª parte das telas
+- Deploy na Vercel
+- Funcionalidade de pesquisa
+- Funcionalidade de filtros
+- Funcionalidade de cupom - limite de 1 por compra
+- Máscaras nos inputs
+- Paginação dos produtos (cadastrar ao menos 12 produtos de uma categoria para demonstração da funcionalidade)
+- Pin Code/CEP retornando dados de localização do usuário (tela checkout) - consumindo API
+- Todas as funcionalidades respondendo de maneira correta.
+- Apresentação do projeto no dia determinado. A não apresentação acarretará nota 0 da fase.
+
+## 👀 Critérios de avaliação
+
+### Fase 01
 
 - Componentes no Storybook
 - Utilização do styled-components
@@ -63,6 +102,8 @@ Entrega: 16/12 -  commits aceitos até até as 12h
 - Botões não definidos devem levar pra página 404
 - Fotos podem ser diferentes do Figma (seguindo o conceito de produtos do e-commerce)
 - Ícones e fonte do Figma
+
+
 
 
 ## 🎨 Layout
@@ -94,6 +135,17 @@ O layout da aplicação está disponível no Figma:
   <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaProductsDesktop1.png">
 </p>
 
+- My Cart
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaMyCart.png">
+</p>
+
+- Checkout
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaCheckOutDeskTop.png">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaCheckoutPaymentsDesktop.png">
+</p>
+
 
 ### Mobile
 
@@ -117,6 +169,46 @@ O layout da aplicação está disponível no Figma:
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
   <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaProductsMobile1.png">
 <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaProductsMobile2.png">
+</p>
+
+- Rewiew
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaReviewMobile.png">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaReviewAddMobile.png">
+</p>
+
+- Pesquisa
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaSearchMobile1.png">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaSearchMobile2.png">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaSearchMobile3.png">
+</p>
+
+- Bag
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaBagMobile.png">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaBagVaziaMobile.png">
+</p>
+
+- Order Summary
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaOrderSummaryMobile.png">
+</p>
+
+- Address
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaAddressMobile.png">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaAddNewAddressMobile.png">
+</p>
+
+- ayments
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaAddressMobile.png">
+</p>
+
+- Confirmerd
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center; flex-direction: column;">
+  <img alt="Tela de home" src="https://github.com/emanuelAlbuquerque/PWA-eCommerce/blob/main/projeto-final/src/assets/img/imgsTelas/imgTelaConcluidaMobile.png">
 </p>
 
 ## 🛠 Tecnologias
