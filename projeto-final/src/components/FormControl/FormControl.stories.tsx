@@ -26,6 +26,7 @@ const TampleteDefault = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
 
         <br />
@@ -39,6 +40,7 @@ const TampleteDefault = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
 
         <br />
@@ -54,6 +56,7 @@ const TampleteDefault = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
       </div>
     </>
@@ -78,6 +81,7 @@ const TampleteAction = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
 
         <br />
@@ -91,6 +95,7 @@ const TampleteAction = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
 
         <br />
@@ -106,6 +111,7 @@ const TampleteAction = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
       </div>
     </>
@@ -136,6 +142,7 @@ const TampleteIcons = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
 
         <br />
@@ -155,6 +162,7 @@ const TampleteIcons = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
 
         <br />
@@ -176,6 +184,7 @@ const TampleteIcons = () => {
           name="teste"
           placeholder="StoryBook"
           type="text"
+          label="Digite Aqui"
         />
       </div>
     </>
