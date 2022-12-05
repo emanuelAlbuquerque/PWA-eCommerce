@@ -14,7 +14,7 @@ export function BottomNavigation({ theme = 'light' }: BottomNavigationProps){
   const navigate = useNavigate()
 
   const onClickHome = () => navigate('/')
-  const onClickCategoryPage = () => navigate('/categoryPage')
+  const onClickCategoryPage = () => navigate('/bagMobile')
 
   return(
     <Nav theme={theme}>
