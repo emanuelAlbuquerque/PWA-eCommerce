@@ -66,9 +66,9 @@ export const corVariantes: corVariantesTypes = {
   }
 }
 
-export const Ancora = styled.a<ButtonColorProps>`
+export const Ancora = styled.button<ButtonColorProps>`
   width: 100%;
-  max-width: 136px;
+  max-width: 150px;
   height: 45px;
   border-radius: 8px;
 
@@ -90,6 +90,9 @@ export const Ancora = styled.a<ButtonColorProps>`
 
   .icon {
     fill: ${props => props.color};
+  }
+  .iconStroke {
+    stroke: ${props => props.color};
   }
 
 
