@@ -10,6 +10,7 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  position: relative;
 
 
     input{
