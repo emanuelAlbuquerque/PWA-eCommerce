@@ -10,7 +10,7 @@ export default {
 export const Default = () => (
   <>
     <GlobalStyle />
-    <Accordian>
+    <Accordian label="More's Abault">
       <FooterMobile />
     </Accordian>
   </>
