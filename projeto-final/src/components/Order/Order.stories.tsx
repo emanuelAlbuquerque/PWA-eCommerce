@@ -14,7 +14,7 @@ export const Default: Story<OrderProps> = () => (
   <>
     <GlobalStyle />
     <Order
-
+      variant="default"
       title='Order Summary'
       deliveryFee={0}
       discount={0}
