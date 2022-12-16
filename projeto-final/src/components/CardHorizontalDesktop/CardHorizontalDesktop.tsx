@@ -1,4 +1,5 @@
 import { DefaultCard } from "../CardVerticais/Default/DefaultCard";
+import { modalBagItensProps } from "../ModalBag/ModalBag";
 import { ContainerTr } from "./style";
 
 export interface CardHorizontalDesktopProps{
@@ -11,6 +12,7 @@ export interface CardHorizontalDesktopProps{
   img: string
   onClickMoveItem?: () => void
   onClickRemoveItem?: () => void
+  setItens?: React.Dispatch<React.SetStateAction<modalBagItensProps[]>>
 }
 
 export function CardHorizontalDesktop(
@@ -23,7 +25,8 @@ export function CardHorizontalDesktop(
     quantidade, 
     subtotal, 
     onClickMoveItem,
-    onClickRemoveItem
+    onClickRemoveItem,
+    setItens
   }: CardHorizontalDesktopProps){
 
     const handleClickMoveItem = () => {
@@ -36,6 +39,7 @@ export function CardHorizontalDesktop(
         onClickRemoveItem()
       }
     }
+    
 
   return(
     <ContainerTr id={id}>
@@ -54,7 +58,7 @@ export function CardHorizontalDesktop(
       <td className="precoProduto">
         <div>
           <p>
-            ${preco}
+            ${(preco).toFixed(2)}
           </p>
           <button className="moveItem" onClick={handleClickMoveItem}>
             Move to Wishlist
@@ -74,7 +78,7 @@ export function CardHorizontalDesktop(
       <td className="subTotalProduto">
         <div>
           <p>
-            ${subtotal}
+            ${(subtotal).toFixed(2)}
           </p>
         </div>
       </td>
