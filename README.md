@@ -259,6 +259,10 @@ $ npm run storybook
 
 - [PWA-eCommerce](https://pwa-ecommerce-fesyo0p5h-emanuelalbuquerque.vercel.app/)
 
+### Repositório Back End
+
+- [PWA-eCommerce-backEnd](https://github.com/emanuelAlbuquerque/PWA-eCommerce-backEnd)
+
 
 ## 📝 Autor
 
