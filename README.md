@@ -255,6 +255,10 @@ $ npm run storybook
 
 ```
 
+### Deploy no Versel
+
+- [PWA-eCommerce](https://pwa-ecommerce-fesyo0p5h-emanuelalbuquerque.vercel.app/)
+
 
 ## 📝 Autor
 
