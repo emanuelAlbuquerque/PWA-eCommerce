@@ -1,4 +1,3 @@
-import useState from 'storybook-addon-state';
 import { GlobalStyle } from "../../styles/Global";
 import { Accordian } from "./Accordian";
 
