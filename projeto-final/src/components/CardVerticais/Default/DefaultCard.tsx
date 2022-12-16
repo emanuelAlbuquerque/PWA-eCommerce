@@ -3,8 +3,12 @@ import { Container } from "./style";
 import { CrossSmall } from "../../../assets/Icons/General/CrossSmall";
 import { Stepper } from "../../Stepper/Stepper";
 import { SetStateAction, useEffect, useState } from "react";
+import api from "../../../services/api";
+import { UserLogado } from "../../../User/UserLogado";
+import { modalBagItensProps } from "../../ModalBag/ModalBag";
 
 export interface DefaultCardProps{
+  id?: string
   img: string
   nomeProduto: string
   descricaoProduto: string
@@ -16,6 +20,8 @@ export interface DefaultCardProps{
   setPrecoTotal?: React.Dispatch<SetStateAction<number>>
   precoTotal?: number
 
+  setItens?: React.Dispatch<React.SetStateAction<modalBagItensProps[]>>
+
   showStepper?: boolean
   showAmount?: boolean
   showRemoveProduto?: boolean
@@ -25,11 +31,13 @@ export interface DefaultCardProps{
 export function DefaultCard(
   {
     descricaoProduto, 
+    id,
     nomeProduto, 
     precoProduto,
     quantidadeProduto,
     img,
     onClick,
+    setItens,
     className,
     setPrecoTotal,  
     precoTotal,
@@ -53,6 +61,14 @@ export function DefaultCard(
       setPrecoTotal(precoTotal - precoProduto)
     }
   }
+
+  const deletaProduto = async (id: string) => {
+    const deleta = await api.put(`/removerProdutos/${UserLogado.email}/${id}`)
+
+    const res = await api.get(`/listarCarrinhoUsuario/${UserLogado.email}`)
+
+    {setItens && setItens(res.data)}
+  }
   
   return(
     <Container className={className}>
@@ -61,7 +77,9 @@ export function DefaultCard(
         <div className="name_products">
           <h2>{nomeProduto}</h2>
           {showRemoveProduto &&
-            <button onClick={onClick}>
+            <button onClick={() => {
+              deletaProduto(id as string)
+            }}>
               <CrossSmall />
             </button>
           }
@@ -76,11 +94,12 @@ export function DefaultCard(
           }
         </div>
         {showStepper && 
-          <Stepper className="contador" 
-            count={count} 
-            setCount={setCount} 
-            aumentaPreco={aumentaPreco} 
+          <Stepper className="contador"
+            count={count}
+            setCount={setCount}
+            aumentaPreco={aumentaPreco}
             diminuiPreco={diminuiPreco}
+            idProduto={ id }
           />
         }
       </div>

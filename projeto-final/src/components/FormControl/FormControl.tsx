@@ -15,6 +15,7 @@ export interface FormControlProps{
 
   variant: "action" | "icons" | "default" | "active"
   mensagem?: string
+  mensagemError?: string
 
   value?: string
   setValue?: React.Dispatch<SetStateAction<string>>
@@ -46,7 +47,8 @@ export function FormControl(
     type,
     name,
     placeholder,
-    className
+    className,
+    mensagemError
   }: FormControlProps){
 
   return(
@@ -86,6 +88,10 @@ export function FormControl(
           </button>
         }
       </div> 
+
+      {error &&
+        <p className="mensagemError">{mensagemError}</p>
+      }
 
       {mensagem &&
         <p>{mensagem}</p> 
