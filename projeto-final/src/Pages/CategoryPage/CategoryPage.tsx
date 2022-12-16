@@ -14,14 +14,26 @@ import { ChevronLeft } from "../../assets/Icons/General/ChevronLeft";
 import { Filter } from "../../assets/Icons/General/Filter";
 import { Sort } from "../../assets/Icons/General/Sort";
 import { RadioButton } from "../../components/RadioButton/RadioButton";
-import {useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import { Cross } from "../../assets/Icons/General/Cross";
 import { useNavigate } from "react-router-dom";
 import { ModalBag } from "../../components/ModalBag/ModalBag";
 import FiltrosColor from '../../Util/FiltrosColor.json'
 
-export function CategoryPage(){
 
+import { Produto } from "../../types/ProdutosTypes";
+import api from "../../services/api";
+
+export function CategoryPage() {
+  
+  // Pega produtos da api
+  const [produtos, setProdutos] = useState<Produto[]>()
+  useEffect(() => {
+    api.get(`/listarProdutos`).then((res) => {
+      setProdutos(res.data)
+    })
+  }, [])
+  
   const [modalSortOn, setModalSortOn] = useState(false)
   const [modalBagOn, setModalBagOn] = useState(false)
   const [modelPage, setModelPage] = useState(true)
@@ -65,10 +77,12 @@ export function CategoryPage(){
     setModelPage(true)
   }
 
+
+
   return(
     <>
       <Header setModalBagOn={setModalBagOn}/>
-
+      
         <BarraNavegacao>
             <AppBar 
               text="Handbags" 
@@ -146,22 +160,27 @@ export function CategoryPage(){
           </ModeloPagina>
 
           <Produtos modelPage={modelPage}>
-            {OpcoesProducts.map((produto) => (
-              <Products
-                className="produtos_item"
-                key={produto.id}
-                id={produto.id}
-                background={produto.img}
-                defaultRatings={produto.defaultRatings}
-                nameProduct={produto.nome}
-                descriptionProducts={produto.descricao}
-                ratings={produto.ratings}
-                procoTotal={produto.precoTotal}
-                precoComDesconto={produto.preco}
-                totalDesconsto={produto.desconto}
-                quantidadeVendas={produto.quantidadeVendas}
-              />
-            ))}
+            {produtos
+              ? 
+                produtos.map((produto) => (
+                  <Products
+                    className="produtos_item"
+                    key={produto._id}
+                    id={produto._id}
+                    background={produto.img}
+                    defaultRatings={produto.defaultRatings}
+                    nameProduct={produto.nome}
+                    descriptionProducts={produto.descricao}
+                    ratings={produto.ratings}
+                    procoTotal={produto.precoTotal}
+                    precoComDesconto={produto.preco}
+                    totalDesconsto={produto.desconto}
+                    quantidadeVendas={produto.quantidadeVendas}
+                  />
+                ))
+              :
+                <h1>Nenhum produto Disponivel</h1>
+            }
           </Produtos>
 
         </ContainerLista>
