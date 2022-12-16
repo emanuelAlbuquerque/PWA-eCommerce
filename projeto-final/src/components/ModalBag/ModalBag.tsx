@@ -6,39 +6,59 @@ import { TextField } from "../TextField/TextField";
 import { ButtonPrimary } from "../Buttons/Primary/ButtonPrimary";
 import {useEffect, useState} from "react";
 import { NavLink, Link } from "react-router-dom";
+import api from "../../services/api";
+import { UserLogado } from "../../User/UserLogado";
+import { Produto } from "../../types/ProdutosTypes";
 
 export interface ModalBagProps{
   modalBagOn: boolean
   setModalBagOn: React.Dispatch<React.SetStateAction<boolean>>
-}
 
-interface BagItensProps{
-  quantidade: number, 
-  nome: string, 
-  descricao: string, 
-  preco: number, 
-  id: string
-  img: string
-}
-
-export function ModalBag({modalBagOn, setModalBagOn}: ModalBagProps){
-  const getPublicacoesStorage = () => JSON.parse(localStorage.getItem('bag') as string) ?? [];
   
-  const [itens, setItens] = useState<BagItensProps[]>(getPublicacoesStorage())
+}
+
+export interface modalBagItensProps{
+  _id: string
+  produtos: [
+    {
+      produto: Produto
+      quantidade: number
+      _id: string
+    }
+  ]
+}
+
+export function ModalBag({ modalBagOn, setModalBagOn }: ModalBagProps) {
+  const [itens, setItens] = useState<modalBagItensProps[]>([])
   const [precoTotal, setPrecoTotal] = useState<number>(0)
+  const [taxa, setTaxa] = useState<number>(0)
   const handleOnClickBagOff = () => {
     setModalBagOn(false)
   } 
+ 
+  const pegaDados = async () => {
+    const res = await api.get(`/listarCarrinhoUsuario/${UserLogado.email}`)
+
+    setItens(res.data)
+  }
+  
+  const pegaTotal = () => {
+    let total = precoTotal
+    itens[0]?.produtos.forEach((item) => {
+      total += item.produto.preco * item.quantidade
+    }) 
+    setPrecoTotal(total)
+  }
+  
   
   useEffect(() => {
-    let total = precoTotal
+    pegaDados()
+  }, []) 
+  
+  useEffect(() => {
+    pegaTotal()
+  }, [itens])
 
-    itens.map((item) => {
-      total += item.preco * item.quantidade
-    })
-
-    setPrecoTotal(total)
-  }, [])
 
   return(
     <ContainerModalBag modalBagOn={modalBagOn}>
@@ -52,19 +72,22 @@ export function ModalBag({modalBagOn, setModalBagOn}: ModalBagProps){
         />
 
         <ContainerItens>
-          {itens.map((item, key) => (
-            <DefaultCard
-              key={key}
-              nomeProduto={item.nome}
-              descricaoProduto={item.descricao}
-              precoProduto={item.preco}
-              img={item.img}
-              quantidadeProduto={item.quantidade}
-              className="card" 
-              setPrecoTotal={setPrecoTotal}
-              precoTotal={precoTotal}
-            />
-          ))}
+          {itens[0]?.produtos.map((item) => (
+              <DefaultCard
+                id={item._id}
+                key={item._id}
+                nomeProduto={item.produto.nome}
+                descricaoProduto={item.produto.descricao}
+                precoProduto={item.produto.preco}
+                img={`../../${item.produto.img}`}
+                quantidadeProduto={item.quantidade}
+                className="card"
+                setItens = {setItens}
+                setPrecoTotal={setPrecoTotal}
+                precoTotal={precoTotal}
+              />
+            ))
+          }
         </ContainerItens>
         <ContainerInfosProdutos>
           <InfosProdutos>
@@ -73,11 +96,11 @@ export function ModalBag({modalBagOn, setModalBagOn}: ModalBagProps){
           </InfosProdutos>
           <InfosProdutos>
             <p>Tax:</p>
-            <p>$2.00</p>
+            <p>${(taxa).toFixed(2)}</p>
           </InfosProdutos>
           <InfosProdutos>
             <h2>Total:</h2>
-            <h2>$111.38</h2>
+            <h2>{precoTotal && `$${(precoTotal - taxa).toFixed(2)}`}</h2>
           </InfosProdutos>
         </ContainerInfosProdutos>
 
