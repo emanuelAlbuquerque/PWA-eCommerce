@@ -1,8 +1,7 @@
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import { Tabs } from "../../components/Tabs/Tabs";
 import { TabsItem } from "../../components/Tabs/TabsItem/TabsItem";
-import bolsa from '../../assets/img/bolsaRosa.png'
 import { Ratings } from "../../components/Ratings/Ratings";
 import { TextField } from "../../components/TextField/TextField";
 import { Stepper } from "../../components/Stepper/Stepper";
@@ -23,9 +22,12 @@ import { ReferAndEarn } from "../../components/ReferAndEarn/ReferAndEarn";
 import { RatingsMobile } from "../../components/RatingsMobile/RatingsMobile";
 import { ButtonDuo } from "../../components/AssemblyButtons/Duo/ButtonDuo";
 import { Espacamento } from "../Home/style"
-import OpcoesProduto from '../../Util/OpcoesProducts.json'
-import { useState } from "react";
+import {useEffect, useLayoutEffect, useState} from "react";
 import { ModalBag } from "../../components/ModalBag/ModalBag";
+
+import api from "../../services/api";
+import { Produto } from "../../types/ProdutosTypes";
+import { UserLogado } from "../../User/UserLogado";
 
 
 interface ProdutoPros{
@@ -44,10 +46,36 @@ interface ProdutoPros{
 export function ProductPage() {
   const [count, setCount] = useState(1)
   const [modalBagOn, setModalBagOn] = useState(false)
-
-  const { idProduto } = useParams() //Pega o id do produto
-
   const navigate = useNavigate()
+  const [produto, setProduto] = useState<Produto>()
+  const { idProduto } = useParams() //Pega o id do produto
+  const [itemCarrinho, setItemCarrinho] = useState(false)
+
+  
+  useLayoutEffect(() => {
+    api.get(`/produto/${idProduto}`).then((res) => {
+      setProduto(res.data)
+    }).catch((err) => {
+      console.log('Produto não encontrado')
+    })
+  }, [])
+
+  async function adicionaCarrinho(){
+    const res = await api.put(`/adicionarProdutosCarrinho/${UserLogado.email}`, {
+      "produto": produto?._id,
+      "quantidade": count
+    })
+
+    alert('Item adicionado com sucesso')
+  }
+
+  async function adicionaFavoritos(){
+    const res = await api.put(`/adicionarProdutosFavorito/${UserLogado.email}`, {
+      "produto": produto?._id,
+    })
+
+    alert('Item adicionado com sucesso')
+  }
 
   const AppBarHandleClick = () => {
     navigate('/categoryPage')
@@ -56,26 +84,6 @@ export function ProductPage() {
   const sideNavigateClick = () => {
     navigate('/')
   }
-
-  const produto: ProdutoPros[] = OpcoesProduto.filter((opcao) => opcao.id === idProduto)
-  const getPublicacoesStorage = () => JSON.parse(localStorage.getItem('bag') as string) ?? [];
-
-  const handleClickSaveLocalStorage = (quantidade: number, nome: string, descricao: string, preco: number, id: string, img: string
-  ) => {
-    localStorage.setItem('bag', JSON.stringify(
-      [
-        ...getPublicacoesStorage(),
-        {
-          "id": id,
-          "quantidade": quantidade,
-          "nome": nome,
-          "descricao": descricao,
-          "preco": preco,
-          "img": img
-        },
-      ]
-    ))
-}
 
   return (
     <>
@@ -89,143 +97,149 @@ export function ProductPage() {
         />
       </BarraNavegacao>
   
-      {produto.map((item) => (
-        <main key={item.id}>
-          <ContainerInfosProdutos>
-            <ImagemProduto>
-              <div className="imagensProdutos">
-                <div className="imgDesktop">
-                  <img src={item.img} alt="" className="imgProduto" />
-                </div>
-                <div className="imgMobile">
-                  <img src={item.img} alt="" className="imgProduto" />
-                  <img src={item.img} alt="" className="imgProduto" />
-                  <img src={item.img} alt="" className="imgProduto" />
-                  <img src={item.img} alt="" className="imgProduto" />
-                  <img src={item.img} alt="" className="imgProduto" />
-                  <img src={item.img} alt="" className="imgProduto" />
-                </div>
-              </div>
-              <div className="sliderProduto">
-                <img src={item.img} alt="" />
-                <img src={item.img} alt="" />
-                <img src={item.img} alt="" />
-                <img src={item.img} alt="" />
-              </div>
-            </ImagemProduto>
-
-            <InfosProdutos>
-              <NomeProduto>
-                <h1>{item.nome}</h1>
-                <h2>{item.descricao}</h2>
-              </NomeProduto>
-              <RatingsProduto>
-                <Ratings defaultValue={item.defaultRatings} />
-                <p>({item.ratings}) Ratings</p>
-              </RatingsProduto>
-              <PrecoProduto>
-                <h2>${item.preco}</h2>
-                <h3>${item.precoTotal}</h3>
-                <p>{item.desconto}%OFF</p>
-              </PrecoProduto>
-
-              <hr />
-
-              <RatingsMobile ratings={item.defaultRatings} totalRatings={item.ratings}/>
-
-              <ContainerCode>
-                <ValidaCode>
-                  <div className="enviaCode">
-                    <h2>Delivery Details</h2>
-                    <p>Check estimated delivery date/pickup option.</p>
+      {produto && 
+        <>
+          <main key={produto._id}>
+            <ContainerInfosProdutos>
+              <ImagemProduto>
+                <div className="imagensProdutos">
+                  <div className="imgDesktop">
+                    <img src={`../../${produto.img}`} alt="" className="imgProduto" />
                   </div>
-                  <TextField className="informaCode" />
-                </ValidaCode>
+                  <div className="imgMobile">
+                    <img src={`../../${produto.img}`} alt="" className="imgProduto" />
+                    <img src={`../../${produto.img}`} alt="" className="imgProduto" />
+                    <img src={`../../${produto.img}`} alt="" className="imgProduto" />
+                    <img src={`../../${produto.img}`} alt="" className="imgProduto" />
+                    <img src={`../../${produto.img}`} alt="" className="imgProduto" />
+                    <img src={`../../${produto.img}`} alt="" className="imgProduto" />
+                  </div>
+                </div>
+                <div className="sliderProduto">
+                  <img src={`../../${produto.img}`} alt="" />
+                  <img src={`../../${produto.img}`} alt="" />
+                  <img src={`../../${produto.img}`} alt="" />
+                  <img src={`../../${produto.img}`} alt="" />
+                </div>
+              </ImagemProduto>
 
-                <QuantidadeProduto>
-                  <p>Quantity:</p>
-                  <Stepper count={count} setCount={setCount}/>
-                </QuantidadeProduto>
- 
-                <ContainerCodigosDesconto>
-                  <Offers descricaoCupom="Get upto 30% Off on order value above $100" codigo="ORDER100" />
-                  <Offers descricaoCupom="Get upto 30% Off on order value above $100" codigo="ORDER100" />
-                  <Offers descricaoCupom="Get upto 30% Off on order value above $100" codigo="ORDER100" />
-                </ContainerCodigosDesconto>
-              </ContainerCode>
+              <InfosProdutos>
+                <NomeProduto>
+                  <h1>{produto.nome}</h1>
+                  <h2>{produto.descricao}</h2>
+                </NomeProduto>
+                <RatingsProduto>
+                  <Ratings defaultValue={produto.defaultRatings} />
+                  <p>({produto.ratings}) Ratings</p>
+                </RatingsProduto>
+                <PrecoProduto>
+                  <h2>${produto.preco}</h2>
+                  <h3>${produto.precoTotal}</h3>
+                  <p>{produto.desconto}%OFF</p>
+                </PrecoProduto>
 
-              <ContainerButton>
-                <ButtonPrimary 
-                  variant="default" 
-                  icon={<Bag />} 
-                  text="Add to Bag" 
-                  onClick={() => {
-                    handleClickSaveLocalStorage(count, item.nome, item.descricao, item.preco, item.id, item.img)
-                  }}
-                />
-                <ButtonOutline variant="default" icon={<Hearth />} text="Add To Wishlist" />
-              </ContainerButton>
+                <hr />
 
-            </InfosProdutos>
-          </ContainerInfosProdutos>
+                <RatingsMobile ratings={produto.defaultRatings} totalRatings={produto.ratings}/>
 
-          <ContainerDetalhesProdutos>
-            <Tabs>
-              <TabsItem text="Product Description" active />
-              <TabsItem text="Related Products" />
-              <TabsItem text="Ratings and Reviews" />
-            </Tabs>
+                <ContainerCode>
+                  <ValidaCode>
+                    <div className="enviaCode">
+                      <h2>Delivery Details</h2>
+                      <p>Check estimated delivery date/pickup option.</p>
+                    </div>
+                    <TextField className="informaCode" />
+                  </ValidaCode>
 
-            <div className="detalhes">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus scelerisque laoreet tortor cras molestie tincidunt malesuada malesuada. Neque, mauris duis dui id morbi magna. Cras lacus, viverra auctor in turpis est quisque eget tristique
-              </p>
+                  <QuantidadeProduto>
+                    <p>Quantity:</p>
+                    <Stepper count={count} setCount={setCount}/>
+                  </QuantidadeProduto>
+  
+                  <ContainerCodigosDesconto>
+                    <Offers descricaoCupom="Get upto 30% Off on order value above $100" codigo="ORDER100" />
+                    <Offers descricaoCupom="Get upto 30% Off on order value above $100" codigo="ORDER100" />
+                    <Offers descricaoCupom="Get upto 30% Off on order value above $100" codigo="ORDER100" />
+                  </ContainerCodigosDesconto>
+                </ContainerCode>
 
-              <p>
-                Dolor augue mattis duis semper gravida enim eu imperdiet sit. Et pharetra platea pretium nec feugiat tincidunt quam leo tristique. Nulla enim consectetur sit et tempus, faucibus leo ac cras. Purus ut non eu mus volutpat.
-              </p>
+                <ContainerButton>
+                  <ButtonPrimary 
+                    variant="default" 
+                    icon={<Bag />} 
+                    text="Add to Bag" 
+                    onClick={adicionaCarrinho}
+                  />
+                  <ButtonOutline
+                    variant="default"
+                    icon={<Hearth />}
+                    text="Add To Wishlist"
+                    onClick={adicionaFavoritos}
+                  />
+                </ContainerButton>
 
-              <p>
-                Eget est vel sagittis amet sit eu eu ullamcorper tellus. Leo mauris, faucibus vulputate adipiscing elementum tristique dictumst augue pellentesque. Justo, sed nunc, pretium turpis scelerisque. Enim urna etiam morbi vestibulum ac dictumst. Ac ut elementum molestie sit felis imperdiet.
-              </p>
-            </div>
-          </ContainerDetalhesProdutos>
+              </InfosProdutos>
+            </ContainerInfosProdutos>
 
-          <Seprator />
+            <ContainerDetalhesProdutos>
+              <Tabs>
+                <TabsItem text="Product Description" active />
+                <TabsItem text="Related Products" />
+                <TabsItem text="Ratings and Reviews" />
+              </Tabs>
 
-          <Accordian label="Product Description">
-            <TextDetalhesProduto>
-              Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.
-            </TextDetalhesProduto>
-          </Accordian>
+              <div className="detalhes">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus scelerisque laoreet tortor cras molestie tincidunt malesuada malesuada. Neque, mauris duis dui id morbi magna. Cras lacus, viverra auctor in turpis est quisque eget tristique
+                </p>
 
-          <Seprator />
+                <p>
+                  Dolor augue mattis duis semper gravida enim eu imperdiet sit. Et pharetra platea pretium nec feugiat tincidunt quam leo tristique. Nulla enim consectetur sit et tempus, faucibus leo ac cras. Purus ut non eu mus volutpat.
+                </p>
 
-          <SideNavigation text="Ratings & Reviews" onClick={sideNavigateClick} />
+                <p>
+                  Eget est vel sagittis amet sit eu eu ullamcorper tellus. Leo mauris, faucibus vulputate adipiscing elementum tristique dictumst augue pellentesque. Justo, sed nunc, pretium turpis scelerisque. Enim urna etiam morbi vestibulum ac dictumst. Ac ut elementum molestie sit felis imperdiet.
+                </p>
+              </div>
+            </ContainerDetalhesProdutos>
 
-          <Seprator />
+            <Seprator />
 
-          <ReferAndEarn />
+            <Accordian label="Product Description">
+              <TextDetalhesProduto>
+                Experience comfortable and easy travelling like never before with this coach bag. It features a zip closure, removable straps and multiple organization compartments to keep your valuables safe. Crafted from premium material, it is durable and lasts long.
+              </TextDetalhesProduto>
+            </Accordian>
 
-          <Espacamento >
-            <br />
-            <br />
-            <br />
-            <br />
-          </Espacamento>
+            <Seprator />
 
-          <ContainerButtonMobile>
-            <ButtonDuo 
-              iconButtonSmall={<Hearth />} 
-              iconButtonLarge={<Bag />} 
-              textButtonLarge="Add to bag" 
-              onClickButtonLarge={() => {
-                handleClickSaveLocalStorage(count, item.nome, item.descricao, item.preco, item.id, item.img)
-              }}/>
-          </ContainerButtonMobile>
-        </main>
-      ))}
-      <FooterWeb />
+            <SideNavigation text="Ratings & Reviews" onClick={sideNavigateClick} />
+
+            <Seprator />
+
+            <ReferAndEarn />
+
+            <Espacamento >
+              <br />
+              <br />
+              <br />
+              <br />
+            </Espacamento>
+
+            <ContainerButtonMobile>
+              <ButtonDuo 
+                iconButtonSmall={<Hearth />}
+                iconButtonLarge={<Bag />}
+                textButtonLarge="Add to bag"
+                onClickButtonLarge={adicionaCarrinho}
+                onClickButtonSmall={adicionaFavoritos}
+              />
+                
+            </ContainerButtonMobile>
+          </main>
+          <FooterWeb />
+        </>
+      }
       <ModalBag modalBagOn={modalBagOn} setModalBagOn={setModalBagOn} />
     </>
   )
