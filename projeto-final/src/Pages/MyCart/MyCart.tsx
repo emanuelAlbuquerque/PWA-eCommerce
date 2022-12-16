@@ -11,14 +11,67 @@ import { TextField } from "../../components/TextField/TextField";
 import { FooterWeb } from "../../components/FooterWeb/FooterWeb";
 import { Order } from "../../components/Order/Order";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { ModalBag } from "../../components/ModalBag/ModalBag";
+import { useState, useEffect } from "react";
+import { ModalBag, modalBagItensProps } from "../../components/ModalBag/ModalBag";
+import api from "../../services/api";
+import { UserLogado } from "../../User/UserLogado";
 
 
 export function MyCart() {
 
   const [modalBagOn, setModalBagOn] = useState(false)
   const navigate = useNavigate()
+  const [precoTotal, setPrecoTotal] = useState<number>(0)
+  const [itens, setItens] = useState<modalBagItensProps[]>([])
+
+  const pegaDados = async () => {
+    const res = await api.get(`/listarCarrinhoUsuario/${UserLogado.email}`)
+
+    setItens(res.data)
+  }
+
+  const pegaTotal = () => {
+    let total = precoTotal
+    itens[0]?.produtos.forEach((item) => {
+      total += item.produto.preco * item.quantidade
+    }) 
+    setPrecoTotal(total)
+  }
+
+
+  const onClickRemoveItem = async (id: string) => {
+    const remove = await api.put(`/removerProdutos/${UserLogado.email}/${id}`)
+
+    pegaDados()
+    pegaTotal()
+    setPrecoTotal(0)
+
+    alert('Item removido com sucesso')
+  }
+
+  const onClickMoveItem = async (idProduto: string, idItem: string) => {
+    const moveItemFavoritos = await api.put(`/adicionarProdutosFavorito/${UserLogado.email}`, {
+      "produto": idProduto
+    })
+
+    const remove = await api.put(`/removerProdutos/${UserLogado.email}/${idItem}`)
+
+    pegaDados()
+    pegaTotal()
+    setPrecoTotal(0)
+
+    alert('Item movido com sucesso')
+  }
+
+  
+  
+  useEffect(() => {
+    pegaDados()
+  }, [])
+
+  useEffect(() => {
+    pegaTotal()
+  }, [itens])
 
   return ( 
       <>
@@ -39,34 +92,28 @@ export function MyCart() {
                   <th>Subtotal</th>
                 </tr>
               </thead>
-              <tbody>
+            <tbody>
+              
+              {itens[0]?.produtos.map((item) => (
                 <CardHorizontalDesktop 
-                  descricao="ceacs" 
-                  name="scd" 
-                  preco={12} 
-                  subtotal={12} 
-                  quantidade={1} 
-                  img={bolsa}
-                  id="1"
+                  key={item._id}
+                  descricao={item.produto.descricao} 
+                  name={item.produto.nome} 
+                  preco={item.produto.preco} 
+                  subtotal={item.produto.preco * item.quantidade} 
+                  quantidade={item.quantidade} 
+                  img={item.produto.img}
+                  id={item._id}
+                  setItens={setItens}
+                  onClickRemoveItem={() => {
+                    onClickRemoveItem(item._id)
+                  }}
+                  onClickMoveItem={() => {
+                    onClickMoveItem(item.produto._id, item._id)
+                  }}
                 />
-                <CardHorizontalDesktop 
-                  descricao="ceacs" 
-                  name="scd" 
-                  preco={12} 
-                  subtotal={12} 
-                  quantidade={1} 
-                  img={bolsa}
-                  id="2"
-                />
-                <CardHorizontalDesktop 
-                  descricao="ceacs" 
-                  name="scd" 
-                  preco={12} 
-                  subtotal={12} 
-                  quantidade={1} 
-                  img={bolsa}
-                  id="3"
-                />
+              ))}
+                
 
               </tbody>
             </ContainerTable>
@@ -76,7 +123,7 @@ export function MyCart() {
                   variant="default"
                   className="OrderItem" 
                   title={"Order Summary"} 
-                  subTotal={69.90} 
+                  subTotal={precoTotal} 
                   discount={1} 
                   deliveryFee={0} 
                   onClickPlaceOrder={() => navigate('/checkoutPage')}
