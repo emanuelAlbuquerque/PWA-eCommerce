@@ -1,36 +1,59 @@
 import { CheckBox, CheckBoxProps } from "./CheckBox";
 import { Meta, Story } from "@storybook/react";
 import { GlobalStyle } from "../../styles/Global";
+import { useState } from "react";
 
 export default {
   title: 'CheckBox/CheckBox',
   component: CheckBox,
 } as Meta<CheckBoxProps>
 
-export const Inactive: Story<CheckBoxProps> = () => (
-  <>
-    <GlobalStyle />
-    <CheckBox label='Aperte aqui' name='ola' />
-  </>
-)
+const TamplateInactive = () => {
+  const [selected, setSelected] = useState(false)
 
-export const Disabled: Story<CheckBoxProps> = () => (
-  <>
-    <GlobalStyle />
-    <CheckBox label='Aperte aqui' name='mundo' disabled />
-  </>
-)
+  return (
+    <>
+      <GlobalStyle />
+      <CheckBox label='Aperte aqui' name='ola' isChecked={selected} setChecked={setSelected} />
+    </>
+  )
+}
+export const Inactive: Story<CheckBoxProps> = TamplateInactive.bind({})
 
-export const Active: Story<CheckBoxProps> = () => (
-  <>
-    <GlobalStyle />
-    <CheckBox label='Aperte aqui' name='aperte' checked />
-  </>
-)
 
-export const Hover: Story<CheckBoxProps> = () => (
-  <>
-    <GlobalStyle />
-    <CheckBox label="Label" name="tudo"  hover/>
-  </>
-)
+const TamplateDisable = () => {
+  const [selected, setSelected] = useState(false)
+
+  return (
+    <>
+      <GlobalStyle />
+      <CheckBox label='Aperte aqui' name='mundo' disabled isChecked={selected} setChecked={setSelected} />
+    </>
+  )
+}
+export const Disabled: Story<CheckBoxProps> = TamplateDisable.bind({})
+
+const TamplateActive = () => {
+  const [selected, setSelected] = useState(false)
+
+  return (
+    <>
+      <GlobalStyle />
+      <CheckBox label='Aperte aqui' name='aperte' checked isChecked={selected} setChecked={setSelected} />
+    </>
+  )
+}
+export const Active: Story<CheckBoxProps> = TamplateActive.bind({})
+
+
+const TamplateHover = () => {
+  const [selected, setSelected] = useState(false)
+
+  return (
+    <>
+      <GlobalStyle />
+      <CheckBox label="Label" name="tudo"  hover isChecked={selected} setChecked={setSelected} />
+    </>
+  )
+}
+export const Hover: Story<CheckBoxProps> = TamplateHover.bind({})
