@@ -99,7 +99,7 @@ export function Home(){
           </h2>
           <button onClick={(e) => {
             if(e.currentTarget.parentElement?.nextSibling){
-              e.currentTarget.parentElement?.nextSibling.scrollBy(100, 0)
+              
             }
           }}>
             View All
